@@ -52,8 +52,8 @@ function Navbar() {
 
 
   return (
-    <div className="p-3 flex justify-between items-center bg-slate-600">
-      <div className="font-bold text-lg">COFFEE APPLICATION</div>
+    <div className="p-3 flex justify-between items-center ">
+      <div className="font-bold text-[3.5rem]">COFFEE APPLICATION</div>
       <div className="flex">
         {menu.map((item) => (
           <ul key={item.key}>
@@ -70,10 +70,10 @@ function Navbar() {
               {item.title}
             </Link>
             {showSubmenu && item.submenu && (
-              <div ref={ref} className="absolute top-12 bg-red-200 px-3 py-1">
+              <div ref={ref} className="absolute top-[4.5rem] bg-red-200 py-2">
                 {item.submenu.map((subItem) => (
                   <Link
-                    className="flex flex-col"
+                    className="flex flex-col hover:bg-orange-300 px-3 py-1 font-normal tracking-wider"
                     href={subItem.link}
                     key={subItem.title}
                   >

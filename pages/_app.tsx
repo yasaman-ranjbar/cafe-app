@@ -8,9 +8,9 @@ interface AppProps {
 
 export default function App({ Component, pageProps }: AppProps) {
   return (
-    <>
+    <div className="bg-primary-light min-h-screen">
       <Navbar />
       <Component {...pageProps} />
-    </>
+    </div>
   );
 }
