@@ -1,0 +1,12 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.submenu::after {
+  content: "";
+  margin: 0 0.25em;
+  display: inline-block;
+  border: 5px solid transparent;
+  border-top: 6px solid currentColor;
+  border-bottom: 0 none;
+}

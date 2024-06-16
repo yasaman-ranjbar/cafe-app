@@ -1,3 +1,4 @@
+import Navbar from "@/components/modules/Navbar/Navbar";
 import "@/styles/globals.css";
 
 interface AppProps {
@@ -6,5 +7,10 @@ interface AppProps {
 }
 
 export default function App({ Component, pageProps }: AppProps) {
-  return <Component {...pageProps} />;
+  return (
+    <>
+      <Navbar />
+      <Component {...pageProps} />
+    </>
+  );
 }
