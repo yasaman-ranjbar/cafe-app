@@ -52,8 +52,8 @@ function Navbar() {
 
 
   return (
-    <div className="p-3 flex justify-between items-center ">
-      <div className="font-bold text-[3.5rem]">COFFEE APPLICATION</div>
+    <div className="p-3 flex justify-between items-center absolute z-50 w-full">
+      <div className="font-bold text-[3.5rem] text-white">COFFEE APPLICATION</div>
       <div className="flex">
         {menu.map((item) => (
           <ul key={item.key}>
@@ -61,8 +61,8 @@ function Navbar() {
               id="submenu"
               className={`${
                 item.submenu ? "submenu" : ""
-              } px-3.5 py-2 relative font-bold text-lg `}
-              href={item.isSubmenu ? "#" : item.link}
+              } px-3.5 py-2 relative font-bold text-lg text-white`}
+              href={item.isSubmenu ? "" : item.link}
               onClick={
                 item.isSubmenu ? () => toggleSubmenu(item.key) : undefined
               }
@@ -70,7 +70,7 @@ function Navbar() {
               {item.title}
             </Link>
             {showSubmenu && item.submenu && (
-              <div ref={ref} className="absolute top-[4.5rem] bg-red-200 py-2">
+              <div ref={ref} className="absolute top-[4.5rem] bg-white py-2">
                 {item.submenu.map((subItem) => (
                   <Link
                     className="flex flex-col hover:bg-orange-300 px-3 py-1 font-normal tracking-wider"

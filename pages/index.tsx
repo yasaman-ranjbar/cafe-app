@@ -1,6 +1,11 @@
+import Slider from "@/components/templates/Home/Slider";
 
 function Index() {
-  return <h1>Coffe Home Page :))</h1>;
+  return (
+    <div>
+      <Slider />
+    </div>
+  );
 }
 
 export default Index;
