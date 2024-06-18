@@ -1,4 +1,3 @@
-import { FaCheck } from "react-icons/fa";
 import Image from "next/image";
 import SectionHeader from "@/components/modules/SectionHeader/SectionHeader";
 
@@ -47,19 +46,19 @@ function About() {
           </p>
           <div className="flex flex-col gap-3 mb-6">
             <h5 className="flex gap-2 items-center">
-              <FaCheck className="text-yellow text-xl" />
+              {/* <FaCheck className="text-yellow text-xl" /> */}
               <span className="text-primary text-xl font-normal">
                 Lorem ipsum dolor sit amet
               </span>
             </h5>
             <h5 className="flex gap-2 items-center">
-              <FaCheck className="text-yellow text-xl" />
+              {/* <FaCheck className="text-yellow text-xl" /> */}
               <span className="text-primary text-xl font-normal">
                 Lorem ipsum dolor sit amet
               </span>
             </h5>
             <h5 className="flex gap-2 items-center">
-              <FaCheck className="text-yellow text-xl" />
+              {/* <FaCheck className="text-yellow text-xl" /> */}
               <span className="text-primary text-xl font-normal">
                 Lorem ipsum dolor sit amet
               </span>

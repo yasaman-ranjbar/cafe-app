@@ -34,6 +34,9 @@ const config: Config = {
       backgroundColor: {
         'primary-dark': '#141414',
         'primary-light': '#fffbf2',
+      },
+      backgroundImage: {
+        'background-bg': "url('/images/bg.jpg')"  
       }
     },
   },

@@ -1,17 +1,25 @@
 import Image from "next/image";
-import { ServiceSectionCardPro0ps } from "./serviceSection.types";
+import { ServiceSectionCardProps } from "./serviceSection.types";
+import "@fortawesome/fontawesome-svg-core/styles.css";
+import { config } from "@fortawesome/fontawesome-svg-core";
+config.autoAddCss = false;
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import * as Icons from "@fortawesome/free-solid-svg-icons";
 
-const ServiceSectionCard: React.FC<ServiceSectionCardPro0ps> = ({
-  description,
+
+
+
+const ServiceSectionCard: React.FC<ServiceSectionCardProps> = ({
+  desc,
   icon,
-  src,
+  img,
   title,
 }) => {
   return (
     <div className="flex">
       <Image
         className="px-3.5"
-        src={src}
+        src={img}
         width={207}
         height={207}
         alt="service"
@@ -19,11 +27,14 @@ const ServiceSectionCard: React.FC<ServiceSectionCardPro0ps> = ({
       <div className="pb-2 px-3.5">
         <div className="flex gap-3.5 items-center">
           <div className="size-[45px] rounded-full bg-yellow flex items-center justify-center text-primary">
-            {icon}
+            <FontAwesomeIcon
+              icon={(Icons as any)[icon]}
+              className="font-base"
+            />
           </div>
           <h3 className="font-semibold text-primary text-xl">{title}</h3>
         </div>
-        <h5 className="text-base text-gray font-normal">{description}</h5>
+        <h5 className="text-base text-gray font-normal">{desc}</h5>
       </div>
     </div>
   );

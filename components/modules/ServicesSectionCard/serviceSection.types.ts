@@ -1,6 +1,10 @@
-export type ServiceSectionCardPro0ps = {
+import { IconDefinition, IconProp } from "@fortawesome/fontawesome-svg-core";
+import { FontAwesomeIconProps } from "@fortawesome/react-fontawesome";
+
+export type ServiceSectionCardProps = {
+    id?: number,
     title: string;
-    src: string;
-    icon: React.ReactNode;
-    description: string;
+    img: string;
+    icon: string;
+    desc: string;
 };
