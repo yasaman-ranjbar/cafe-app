@@ -1,5 +1,10 @@
 import Image from "next/image";
 import SectionHeader from "@/components/modules/SectionHeader/SectionHeader";
+import "@fortawesome/fontawesome-svg-core/styles.css";
+import { config } from "@fortawesome/fontawesome-svg-core";
+config.autoAddCss = false;
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import * as Icons from "@fortawesome/free-solid-svg-icons";
 
 function About() {
   return (
@@ -46,19 +51,20 @@ function About() {
           </p>
           <div className="flex flex-col gap-3 mb-6">
             <h5 className="flex gap-2 items-center">
-              {/* <FaCheck className="text-yellow text-xl" /> */}
+              <FontAwesomeIcon icon={Icons["faCheck"]} className="text-yellow text-xl font-bold" />
+              
               <span className="text-primary text-xl font-normal">
                 Lorem ipsum dolor sit amet
               </span>
             </h5>
             <h5 className="flex gap-2 items-center">
-              {/* <FaCheck className="text-yellow text-xl" /> */}
+              <FontAwesomeIcon icon={Icons["faCheck"]} className="text-yellow text-xl font-bold" />
               <span className="text-primary text-xl font-normal">
                 Lorem ipsum dolor sit amet
               </span>
             </h5>
             <h5 className="flex gap-2 items-center">
-              {/* <FaCheck className="text-yellow text-xl" /> */}
+              <FontAwesomeIcon icon={Icons["faCheck"]} className="text-yellow text-xl font-bold" />
               <span className="text-primary text-xl font-normal">
                 Lorem ipsum dolor sit amet
               </span>

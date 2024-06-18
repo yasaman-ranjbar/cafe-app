@@ -4,7 +4,6 @@ import { ServiceSectionCardProps } from "@/components/modules/ServicesSectionCar
 
 
 function Services({ services }: { services: ServiceSectionCardProps[] }) {
-  console.log("services", services);
   return (
     <div className="container py-12">
       <SectionHeader title="OUR SERVICES" header="Fresh & Organic Beans" />

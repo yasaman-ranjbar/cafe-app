@@ -6,23 +6,8 @@
       "desc": "Sit lorem ipsum et diam elitr est dolor sed duo guberg sea et et lorem dolor",
       "price": 5,
       "img": "/images/menu-1.jpg",
-      "off": 0
-    },
-    {
-      "id": 2,
-      "title": "Chocolete Coffee",
-      "desc": "Sit lorem ipsum et diam elitr est dolor sed duo guberg sea et et lorem dolor",
-      "price": 7,
-      "img": "/images/menu-2.jpg",
-      "off": 0
-    },
-    {
-      "id": 3,
-      "title": "Coffee With Milk",
-      "desc": "Sit lorem ipsum et diam elitr est dolor sed duo guberg sea et et lorem dolor",
-      "price": 9,
-      "img": "/images/menu-3.jpg",
-      "off": 0
+      "off": 0,
+      "type":"hot"
     },
     {
       "id": 4,
@@ -30,7 +15,17 @@
       "desc": "Sit lorem ipsum et diam elitr est dolor sed duo guberg sea et et lorem dolor",
       "price": 5,
       "img": "/images/menu-1.jpg",
-      "off": 0
+      "off": 0,
+      "type":"cold"
+    },
+    {
+      "id": 2,
+      "title": "Chocolete Coffee",
+      "desc": "Sit lorem ipsum et diam elitr est dolor sed duo guberg sea et et lorem dolor",
+      "price": 7,
+      "img": "/images/menu-2.jpg",
+      "off": 0,
+      "type":"hot"
     },
     {
       "id": 5,
@@ -38,15 +33,27 @@
       "desc": "Sit lorem ipsum et diam elitr est dolor sed duo guberg sea et et lorem dolor",
       "price": 7,
       "img": "/images/menu-2.jpg",
-      "off": 0
+      "off": 0,
+      "type":"cold"
     },
+    {
+      "id": 3,
+      "title": "Coffee With Milk",
+      "desc": "Sit lorem ipsum et diam elitr est dolor sed duo guberg sea et et lorem dolor",
+      "price": 9,
+      "img": "/images/menu-3.jpg",
+      "off": 0,
+      "type":"hot"
+    },
+
     {
       "id": 6,
       "title": "Coffee With Milk",
       "desc": "Sit lorem ipsum et diam elitr est dolor sed duo guberg sea et et lorem dolor",
       "price": 9,
       "img": "/images/menu-3.jpg",
-      "off": 0
+      "off": 0,
+      "type":"cold"
     }
   ],
   "services": [

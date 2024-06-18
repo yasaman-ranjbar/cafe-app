@@ -27,7 +27,7 @@ function Offer() {
   };
 
   return (
-    <div className="flex flex-col items-center justify-center bg-background-bg py-12 text-center relative">
+    <div className="flex flex-col items-center justify-center bg-background-bg bg-cover py-12 text-center relative">
       <div className="absolute left-0 top-0 size-full bg-brown/90" />
       <div className="z-10">
         <h1 className="text-yellow text-7xl font-bold mt-4 mb-2">50% OFF</h1>
