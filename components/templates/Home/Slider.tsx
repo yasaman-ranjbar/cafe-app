@@ -1,4 +1,3 @@
-import Image from "next/image";
 import "swiper/css";
 import "swiper/css/navigation";
 
@@ -16,7 +15,7 @@ function Slider() {
     >
       <SwiperSlide style={{ backgroundImage: "url(/images/carousel-1.jpg)" }}>
         <div className="flex flex-col justify-center items-center h-full">
-          <h2 className="text-[#da9f5b] text-[2rem] font-semibold">
+          <h2 className="text-yellow text-[2rem] font-semibold">
             We Have Been Serving
           </h2>
           <h1 className="text-white text-[8rem] font-bold">COFFEE</h1>
