@@ -107,17 +107,51 @@
   "comment": [
     {
       "id": 1,
-      "username": "Q_Yolme",
-      "body": "Perfect Coffee :))",
+      "username": "Eriq Jason",
+      "desc": "Perfect Coffee",
       "productID": 1,
-      "score": 5
+      "score": 5,
+      "img": "/images/testimonial-1.jpg"
     },
     {
       "id": 2,
-      "username": "Amin_Saeedi",
-      "body": "Perfect Coffee :))",
+      "username": "SarahLee",
+      "desc": "Delicious pastries! The croissants are to die for.",
       "productID": 2,
-      "score": 4.5
+      "score": 4,
+      "img": "/images/testimonial-2.jpg"
+    },
+    {
+      "id": 3,
+      "username": "JohnDoe123",
+      "desc": "Cozy atmosphere and friendly staff. Will definitely come back!",
+      "productID": 3,
+      "score": 5,
+      "img": "/images/testimonial-3.jpg"
+    },
+    {
+      "id": 4,
+      "username": "CoffeeAddict",
+      "desc": "The espresso here is amazing! Perfectly balanced and rich.",
+      "productID": 1,
+      "score": 5,
+      "img": "/images/testimonial-4.jpg"
+    },
+    {
+      "id": 5,
+      "username": "FoodieForLife",
+      "desc": "The quiche was a bit dry, but the salad was fresh and flavorful.",
+      "productID": 4,
+      "score": 3,
+      "img": "/images/testimonial-5.jpg"
+    },
+    {
+      "id": 6,
+      "username": "CafeHopper",
+      "desc": "Great spot for a quick lunch break. The sandwiches are filling and reasonably priced.",
+      "productID": 5,
+      "score": 4,
+      "img": "/images/testimonial-6.jpg"
     }
   ]
 }
