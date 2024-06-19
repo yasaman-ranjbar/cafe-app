@@ -4,14 +4,15 @@ import { TestimonialProps } from "@/components/modules/Testimonial/testimonial.t
 
 const Testimonial = ({ comment }: { comment: TestimonialProps[] }) => {
   return (
-    <div className="flex flex-col gap-6 py-12">
-      <SectionHeader header="Our Clients Say" title="TESTIMONIAL" />
-      {comment.map((item) => (
-        <TestimonialCard
-          key={item.id}
-          {...item}
-        />
-      ))}
+    <div>
+      <div className="container flex flex-col gap-6 py-12 ">
+        <SectionHeader header="Our Clients Say" title="TESTIMONIAL" />
+        <div className="grid grid-cols-3 gap-y-8 gap-x-8">
+          {comment.map((item) => (
+            <TestimonialCard key={item.id} {...item} />
+          ))}
+        </div>
+      </div>
     </div>
   );
 };

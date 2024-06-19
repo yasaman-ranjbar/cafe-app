@@ -36,7 +36,9 @@ const config: Config = {
         'primary-light': '#fffbf2',
       },
       backgroundImage: {
-        'background-bg': "url('/images/bg.jpg')"  
+        'background-bg': "url('/images/bg.jpg')",
+        'background-top-paper': "url('/images/overlay-top.png')",
+        'background-bottom-paper': "url('/images/overlay-bottom.png')",
       }
     },
   },

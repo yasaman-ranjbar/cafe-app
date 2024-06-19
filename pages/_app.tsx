@@ -1,3 +1,4 @@
+import Footer from "@/components/modules/Footer/Footer";
 import Navbar from "@/components/modules/Navbar/Navbar";
 import "@/styles/globals.css";
 
@@ -11,6 +12,7 @@ export default function App({ Component, pageProps }: AppProps) {
     <div className="bg-primary-light min-h-screen relative">
       <Navbar />
       <Component {...pageProps} />
+      <Footer />
     </div>
   );
 }

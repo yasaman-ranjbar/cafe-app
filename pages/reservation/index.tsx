@@ -1,5 +1,13 @@
+import PageHeader from "@/components/modules/PageHeader/PageHeader";
+import Reservation from "@/components/templates/Home/Reservation";
+
 function Index() {
-  return <h1>reservation page :))</h1>;
+  return (
+    <>
+      <PageHeader title="reservation" route="Reservation" />
+      <Reservation />
+    </>
+  );
 }
 
 export default Index;
