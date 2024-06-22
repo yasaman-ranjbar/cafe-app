@@ -7,7 +7,7 @@
       "price": 5,
       "img": "/images/menu-1.jpg",
       "off": 0,
-      "type":"hot"
+      "type": "hot"
     },
     {
       "id": 4,
@@ -16,7 +16,7 @@
       "price": 5,
       "img": "/images/menu-1.jpg",
       "off": 0,
-      "type":"cold"
+      "type": "cold"
     },
     {
       "id": 2,
@@ -25,7 +25,7 @@
       "price": 7,
       "img": "/images/menu-2.jpg",
       "off": 0,
-      "type":"hot"
+      "type": "hot"
     },
     {
       "id": 5,
@@ -34,7 +34,7 @@
       "price": 7,
       "img": "/images/menu-2.jpg",
       "off": 0,
-      "type":"cold"
+      "type": "cold"
     },
     {
       "id": 3,
@@ -43,9 +43,8 @@
       "price": 9,
       "img": "/images/menu-3.jpg",
       "off": 0,
-      "type":"hot"
+      "type": "hot"
     },
-
     {
       "id": 6,
       "title": "Coffee With Milk",
@@ -53,7 +52,7 @@
       "price": 9,
       "img": "/images/menu-3.jpg",
       "off": 0,
-      "type":"cold"
+      "type": "cold"
     }
   ],
   "services": [
@@ -153,5 +152,15 @@
       "score": 4,
       "img": "/images/testimonial-6.jpg"
     }
-  ]
+  ],
+  "messages": [
+    {
+      "id": "8749",
+      "name": "yasaman",
+      "email": "y.ranjbar6698@gmail.com",
+      "subject": "rthrftgh",
+      "message": "sssss"
+    }
+  ],
+  "reservation": []
 }

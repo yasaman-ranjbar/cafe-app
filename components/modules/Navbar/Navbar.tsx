@@ -6,6 +6,7 @@ function Navbar() {
   const [showSubmenu, setShowSubmenu] = useState(false);
   const [activeMenu, setActiveMenu] = useState<string | null>(null);
   const ref = useRef<HTMLDivElement>(null);
+  const link = useRef<any>(null);
 
   const menu: NavbarProps[] = [
     { key: "1", title: "Home", link: "/", isSubmenu: false },
@@ -25,7 +26,7 @@ function Navbar() {
         { title: "Testimonial", link: "/testimonial" },
       ],
     },
-    { key: "6", title: "Contact", link: "/", isSubmenu: false },
+    { key: "6", title: "Contact", link: "/contact", isSubmenu: false },
   ];
 
   const toggleSubmenu = (key: string) => {
@@ -35,7 +36,6 @@ function Navbar() {
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
-      console.log("event", event.target);
       if (
         ref.current &&
         !ref.current.contains(event.target as Node) &&
@@ -53,15 +53,19 @@ function Navbar() {
 
   return (
     <div className="p-3 flex justify-between items-center absolute z-50 w-full">
-      <div className="font-bold text-[3.5rem] text-white">COFFEE APPLICATION</div>
+      <div className="flex gap-4 font-bold text-[3.5rem] text-white">
+        <span>COFFEE APPLICATION</span>
+        
+      </div>
       <div className="flex">
         {menu.map((item) => (
           <ul key={item.key}>
             <Link
+              ref={link}
               id="submenu"
               className={`${
                 item.submenu ? "submenu" : ""
-              } px-3.5 py-2 relative font-bold text-lg text-white`}
+              } px-3.5 py-2 relative font-bold text-lg text-white hover:text-yellow`}
               href={item.isSubmenu ? "" : item.link}
               onClick={
                 item.isSubmenu ? () => toggleSubmenu(item.key) : undefined

@@ -69,25 +69,25 @@ function Footer() {
               <div className="flex gap-2">
                 <div className="size-10.5 border border-white flex items-center justify-center p-3">
                   <FontAwesomeIcon
-                    icon={Icons["faATwitter"]}
+                    icon={Icons["faAtom"]}
                     className=" text-xl font-bold"
                   />
                 </div>
                 <div className="size-10.5 border border-white flex items-center justify-center p-3">
                   <FontAwesomeIcon
-                    icon={Icons["faFacebook"]}
+                    icon={Icons["faAtom"]}
                     className=" text-xl font-bold"
                   />
                 </div>
                 <div className="size-10.5 border border-white flex items-center justify-center p-3">
                   <FontAwesomeIcon
-                    icon={Icons["faLinkedin"]}
+                    icon={Icons["faAtom"]}
                     className=" text-xl font-bold"
                   />
                 </div>
                 <div className="size-10.5 border border-white flex items-center justify-center p-3">
                   <FontAwesomeIcon
-                    icon={Icons["faInstagram"]}
+                    icon={Icons["faAtom"]}
                     className=" text-xl font-bold"
                   />
                 </div>

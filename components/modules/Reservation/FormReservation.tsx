@@ -7,10 +7,30 @@ function FormReservation() {
         Book Your Table
       </h1>
       <form className="flex flex-col gap-4">
-        <TextField type="text" placeholder="Name" />
-        <TextField type="text" placeholder="Email" />
-        <TextField type="text" placeholder="Date" />
-        <TextField type="text" placeholder="Time" />
+        <TextField
+          variant="yellow"
+          type="text"
+          placeholder="Name"
+          bgVariant="brown"
+        />
+        <TextField
+          variant="yellow"
+          type="text"
+          placeholder="Email"
+          bgVariant="brown"
+        />
+        <TextField
+          variant="yellow"
+          type="text"
+          placeholder="Date"
+          bgVariant="brown"
+        />
+        <TextField
+          variant="yellow"
+          type="text"
+          placeholder="Time"
+          bgVariant="brown"
+        />
         <select className="bg-brown h-[3.125rem] border border-yellow p-6 text-white">
           <option className="text-white my-4">person1</option>
           <option className="text-white my-4">person2</option>
@@ -24,4 +44,4 @@ function FormReservation() {
   );
 }
 
-export default FormReservation
+export default FormReservation;

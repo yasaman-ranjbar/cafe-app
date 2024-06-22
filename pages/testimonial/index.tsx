@@ -23,6 +23,7 @@ export const getStaticProps = async () => {
     props: {
       comment: commentData,
     },
+    revalidate: 60 * 60 * 24,
   };
 };
 
