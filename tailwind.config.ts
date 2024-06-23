@@ -22,13 +22,17 @@ const config: Config = {
       yellow: "#da9f5b",
       gray: "#A1A1A1",
       darkGray: "#313131",
-      brown:"#33211d",
+      brown: "#33211d",
+      lightBrown:"#4f3319",
+      transparent: "transparent",
+      red: '#ef4444'
     },
     textColor: {
       primary: "#33211d",
       yellow: "#da9f5b",
       white: "#fff",
-      gray:"#555555"
+      gray: "#555555",
+      red: '#ef4444'
     },
     extend: {
       backgroundColor: {
@@ -39,6 +43,7 @@ const config: Config = {
         'background-bg': "url('/images/bg.jpg')",
         'background-top-paper': "url('/images/overlay-top.png')",
         'background-bottom-paper': "url('/images/overlay-bottom.png')",
+        'background-products': "url('/images/product-bg.jpg')",
       }
     },
   },

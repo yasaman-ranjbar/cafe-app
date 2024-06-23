@@ -1,12 +1,20 @@
-import { useEffect, useRef, useState } from "react";
+import { ChangeEvent, KeyboardEventHandler, useEffect, useRef, useState } from "react";
 import { NavbarProps } from "./navbar.types";
 import Link from "next/link";
+import "@fortawesome/fontawesome-svg-core/styles.css";
+import { config } from "@fortawesome/fontawesome-svg-core";
+config.autoAddCss = false;
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import * as Icons from "@fortawesome/free-solid-svg-icons";
+import { useRouter } from "next/router";
 
 function Navbar() {
   const [showSubmenu, setShowSubmenu] = useState(false);
   const [activeMenu, setActiveMenu] = useState<string | null>(null);
+  const [search, setSearch] = useState('');
   const ref = useRef<HTMLDivElement>(null);
   const link = useRef<any>(null);
+  const router = useRouter()
 
   const menu: NavbarProps[] = [
     { key: "1", title: "Home", link: "/", isSubmenu: false },
@@ -50,12 +58,47 @@ function Navbar() {
     };
   }, [ref]);
 
+  const searchHandlerWithEnter = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === "Enter") {
+      searchHandler();
+    }
+  };
+
+  const searchHandler = () => {
+    if (search.trim()) {
+      router.push(`/search?q=${search}`);
+    }
+    
+  }
 
   return (
     <div className="p-3 flex justify-between items-center absolute z-50 w-full">
-      <div className="flex gap-4 font-bold text-[3.5rem] text-white">
-        <span>COFFEE APPLICATION</span>
-        
+      <div className="flex items-center gap-6">
+        <span>
+          <FontAwesomeIcon
+            icon={Icons["faShoppingCart"]}
+            className="text-white text-xl font-bold"
+          />
+        </span>
+        <span className="font-bold text-[2rem] text-white">
+          COFFEE APPLICATION
+        </span>
+
+        <div className="flex gap-2 items-center relative border-b border-white">
+          <input
+            value={search}
+            onChange={(event) => setSearch(event.target.value)}
+            onKeyDown={searchHandlerWithEnter}
+            type="text"
+            className=" outline-none bg-transparent  h-10 text-yellow"
+            placeholder="Search..."
+          />
+          <FontAwesomeIcon
+            icon={Icons["faSearch"]}
+            className="text-white text-lg font-bold"
+            onClick={searchHandler}
+          />
+        </div>
       </div>
       <div className="flex">
         {menu.map((item) => (

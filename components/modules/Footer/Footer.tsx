@@ -3,6 +3,12 @@ import { config } from "@fortawesome/fontawesome-svg-core";
 config.autoAddCss = false;
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import * as Icons from "@fortawesome/free-solid-svg-icons";
+import {
+  faTwitter,
+  faLinkedinIn,
+  faFacebook,
+  faInstagram,
+} from "@fortawesome/free-brands-svg-icons";
 import { useState } from "react";
 
 function Footer() {
@@ -69,25 +75,25 @@ function Footer() {
               <div className="flex gap-2">
                 <div className="size-10.5 border border-white flex items-center justify-center p-3">
                   <FontAwesomeIcon
-                    icon={Icons["faAtom"]}
+                    icon={faFacebook}
                     className=" text-xl font-bold"
                   />
                 </div>
                 <div className="size-10.5 border border-white flex items-center justify-center p-3">
                   <FontAwesomeIcon
-                    icon={Icons["faAtom"]}
+                    icon={faTwitter}
                     className=" text-xl font-bold"
                   />
                 </div>
                 <div className="size-10.5 border border-white flex items-center justify-center p-3">
                   <FontAwesomeIcon
-                    icon={Icons["faAtom"]}
+                    icon={faLinkedinIn}
                     className=" text-xl font-bold"
                   />
                 </div>
                 <div className="size-10.5 border border-white flex items-center justify-center p-3">
                   <FontAwesomeIcon
-                    icon={Icons["faAtom"]}
+                    icon={faInstagram}
                     className=" text-xl font-bold"
                   />
                 </div>

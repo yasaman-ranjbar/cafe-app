@@ -1,7 +1,8 @@
 import Image from "next/image";
 import { MenuProps } from "./menuSection.types";
+import Link from "next/link";
 
-const MenuSection: React.FC<MenuProps> = ({ title, price, img, desc }) => {
+const MenuSection: React.FC<MenuProps> = ({ title, price, img, desc , id }) => {
     return (
       <div className="flex items-center">
         <div className="relative">
@@ -17,7 +18,7 @@ const MenuSection: React.FC<MenuProps> = ({ title, price, img, desc }) => {
           </div>
         </div>
         <div className="px-3.5">
-          <h3 className="text-primary text-2xl font-semibold">{title}</h3>
+          <Link href={`/products/${id}`}><h3 className="text-primary text-2xl font-semibold cursor-pointer">{title}</h3></Link>
           <h5 className="text-gray font-normal">{desc}</h5>
         </div>
       </div>

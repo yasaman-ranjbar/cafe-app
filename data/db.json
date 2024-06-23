@@ -1,58 +1,64 @@
 {
   "menu": [
     {
-      "id": 1,
+      "id": "1",
       "title": "Black Coffee",
       "desc": "Sit lorem ipsum et diam elitr est dolor sed duo guberg sea et et lorem dolor",
-      "price": 5,
+      "price": 50,
       "img": "/images/menu-1.jpg",
-      "off": 0,
-      "type": "hot"
+      "off": 10,
+      "type": "hot",
+      "score": 5
     },
     {
-      "id": 4,
+      "id": "4",
       "title": "Black Coffee",
       "desc": "Sit lorem ipsum et diam elitr est dolor sed duo guberg sea et et lorem dolor",
-      "price": 5,
+      "price": 50,
       "img": "/images/menu-1.jpg",
       "off": 0,
-      "type": "cold"
+      "type": "cold",
+      "score": 3.9
     },
     {
-      "id": 2,
+      "id": "2",
       "title": "Chocolete Coffee",
       "desc": "Sit lorem ipsum et diam elitr est dolor sed duo guberg sea et et lorem dolor",
-      "price": 7,
+      "price": 70,
       "img": "/images/menu-2.jpg",
-      "off": 0,
-      "type": "hot"
+      "off": 5,
+      "type": "hot",
+      "score": 2.2
     },
     {
-      "id": 5,
+      "id": "5",
       "title": "Chocolete Coffee",
       "desc": "Sit lorem ipsum et diam elitr est dolor sed duo guberg sea et et lorem dolor",
-      "price": 7,
+      "price": 70,
       "img": "/images/menu-2.jpg",
-      "off": 0,
-      "type": "cold"
+      "off": 5,
+      "type": "cold",
+      "score": 4.3
     },
     {
-      "id": 3,
+      "id": "3",
       "title": "Coffee With Milk",
       "desc": "Sit lorem ipsum et diam elitr est dolor sed duo guberg sea et et lorem dolor",
-      "price": 9,
+      "price": 90,
       "img": "/images/menu-3.jpg",
-      "off": 0,
-      "type": "hot"
+      "off": 20,
+      "type": "hot",
+      "score": 4.4
     },
     {
-      "id": 6,
+      "id": "6",
       "title": "Coffee With Milk",
       "desc": "Sit lorem ipsum et diam elitr est dolor sed duo guberg sea et et lorem dolor",
-      "price": 9,
+      "price": 90,
       "img": "/images/menu-3.jpg",
       "off": 0,
-      "type": "cold"
+      "type": "cold",
+      "score": 3.7
     }
   ],
   "services": [
