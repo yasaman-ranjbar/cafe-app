@@ -1,11 +1,19 @@
 import { MenuProps } from "@/components/modules/MenuSection/menuSection.types";
+import { TestimonialProps } from "@/components/modules/Testimonial/testimonial.types";
+import ProductComments from "@/components/templates/Comments/ProductComments";
+import Testimonial from "@/components/templates/Home/Testimonial";
 import ProductDetails from "@/components/templates/Products/ProductDetails";
-import { notFound } from "next/navigation";
 
-function Index({ product }: { product: MenuProps }) {
+interface CommentDataProps {
+  comment: TestimonialProps[];
+  product: MenuProps;
+}
+
+function Index({ product, comment }: CommentDataProps) {
   return (
     <>
       <ProductDetails product={product} />
+      <ProductComments comment={comment} />
     </>
   );
 }
@@ -31,10 +39,19 @@ export async function getStaticProps(context: { params: { id: string } }) {
     const res = await fetch(`http://localhost:4000/menu/${params.id}`);
     const product = await res.json();
 
+    const commentRes = await fetch("http://localhost:4000/comment");
+    const comments = await commentRes.json();
+
+    const productComments = comments.filter(
+      (item: TestimonialProps) => item.productID === params.id
+    );
+
     return {
       props: {
         product,
+        comment: productComments,
       },
+      revalidate: 60 * 60 * 12,
     };
   } catch (error) {
     return {

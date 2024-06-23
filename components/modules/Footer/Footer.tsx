@@ -121,7 +121,7 @@ function Footer() {
               <p className="text-base font-normal mb-4">
                 Amet elitr vero magna sed ipsum sit kasd sea elitr lorem rebum
               </p>
-              <div className="pb-6">
+              <div className="flex pb-6">
                 <input
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}

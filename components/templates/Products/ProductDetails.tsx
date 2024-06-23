@@ -31,13 +31,8 @@ const ProductDetails = ({ product }: { product: MenuProps }) => {
               />
             ))}
             {new Array(5 - Math.trunc(product.score!)).fill(0).map((item) => (
-              <FontAwesomeIcon
-                key={item}
-                className="text-lg "
-                icon={faStar}
-              />
+              <FontAwesomeIcon key={item} className="text-lg " icon={faStar} />
             ))}
-
           </div>
           <div className="pt-4">
             {product.off === 0 ? (
@@ -59,6 +54,7 @@ const ProductDetails = ({ product }: { product: MenuProps }) => {
 
           <button className="bg-lightBrown mt-[5rem] w-full text-white p-3 rounded-lg">
             Buy
+            <FontAwesomeIcon className="text-lg ml-2" icon={faShoppingBag} />
           </button>
         </div>
       </div>
