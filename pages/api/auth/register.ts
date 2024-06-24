@@ -1,5 +1,7 @@
 import UserModel from "@/models/User";
 import connectToDB from "@/configs/db";
+import { generateToken, hashPassword } from "@/utils/auth";
+import { serialize } from "cookie";
 
 const handler = async (req: any, res: any) => {
     if (req.method !== "POST") {
@@ -22,22 +24,34 @@ const handler = async (req: any, res: any) => {
             return res.status(422).json({ message: "Data is not valid !!" });
         }
 
-        // isUserExist
-        // HashPassword
-        // GenerateToken
-        // Create ✅
+        const isUserExist = await UserModel.findOne({ $or: [{ username }, { email }] });
+
+        if (isUserExist) {
+            return res
+                .status(422)
+                .json({ message: "User is already exist" });
+        }
+
+        const hashedPassword = await hashPassword(password);
+
+        const token = generateToken({ email });
 
         await UserModel.create({
             firstname,
             lastname,
             username,
             email,
-            password,
+            password: hashedPassword,
             role: "USER",
         });
 
-        return res.status(201).json({ message: "User Created Successfully :))" });
-    } catch (err) {
+        return res
+            .setHeader('Set-Cookie', serialize("token", token, 
+                { httpOnly: true, maxAge: 60 * 60 * 24 , path:"/" }))
+            .status(201)
+            .json({ message: "User Created Successfully :))" });
+    }
+    catch (err) {
         return res
             .status(500)
             .json({ message: "UnKnown Internal Server Erorr !!" });
