@@ -1,5 +1,6 @@
 import { FormEvent, useState } from "react";
 import TextField from "@/components/modules/TextField/TextField";
+import { useRouter } from "next/router";
 
 const Register = () => {
   const [firstname, setFirstName] = useState("");
@@ -7,6 +8,7 @@ const Register = () => {
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const router = useRouter()
 
   const registerUser = async (event: FormEvent) => {
     event.preventDefault();
@@ -36,7 +38,7 @@ const Register = () => {
       },
       body: JSON.stringify(newUser),
     });
-    const data = await res.json();
+     await res.json();
 
     if (res.status === 201) {
       setFirstName("");
@@ -44,14 +46,17 @@ const Register = () => {
       setUsername("");
       setEmail("");
       setPassword("");
-    }
-    console.log("Response =>", res);
-    console.log("Response Data =>", data);
+      alert('Registered successfully')
+      router.push('/')
+    } else if(res.status === 422) {
+      alert('User already exists')
+    } 
+    
   };
 
   return (
     <div className="w-full sm:px-[1rem] md:px-[15rem]">
-      <h1 className="text-primary text-3xl font-semibold mb-4 text-center">
+      <h1 className="text-primary text-3xl font-bold mb-4 text-center">
         Register in Coffee Application
       </h1>
       <form onSubmit={registerUser} className="flex flex-col gap-4">

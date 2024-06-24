@@ -1,65 +1,59 @@
 import { FormEvent, useState } from "react";
 import TextField from "@/components/modules/TextField/TextField";
+import { useRouter } from "next/router";
 
 const Login = () => {
-  const [username, setUsername] = useState("");
-  const [email, setEmail] = useState("");
+  const [identifier, setIdentifier] = useState("");
   const [password, setPassword] = useState("");
+  const router = useRouter();
 
-  const registerUser = async (event: FormEvent) => {
+  const loginUser = async (event: FormEvent) => {
     event.preventDefault();
 
-    if (!username.trim() || !email.trim() || !password.trim()) {
+    if (!identifier.trim() || !password.trim()) {
       return alert("Data is not valid !!");
     }
 
-    const newUser = {
-      username,
-      email,
+    const user = {
+      identifier,
       password,
     };
 
-    const res = await fetch(`/api/users`, {
+    const res = await fetch(`/api/auth/login`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify(newUser),
+      body: JSON.stringify(user),
     });
-    const data = await res.json();
+     await res.json();
 
-    if (res.status === 201) {
-      setUsername("");
-      setEmail("");
+    if (res.status === 200) {
+      setIdentifier("");
       setPassword("");
+      router.replace("/");
+    } else if (res.status === 401) {
+      alert('Invalid credentials');
+    } else if (res.status === 404) { 
+      alert('User not found');
     }
-    console.log("Response =>", res);
-    console.log("Response Data =>", data);
   };
 
   return (
     <div className="w-full sm:px-[1rem] md:px-[15rem]">
-      <h1 className="text-primary text-3xl font-semibold mb-4 text-center">
+      <h1 className="text-primary text-3xl font-bold mb-4 text-center">
         Login to Coffee Application
       </h1>
-      <form onSubmit={registerUser} className="flex flex-col gap-4">
+      <form onSubmit={loginUser} className="flex flex-col gap-4">
+        
         <TextField
           type="text"
           variant="gray"
-          placeholder="Your Username"
+          placeholder="identifier / Username"
           bgVariant="primary-light"
-          name="name"
-          value={username}
-          onChange={(event) => setUsername(event.target.value)}
-        />
-        <TextField
-          type="text"
-          variant="gray"
-          placeholder="Your Email"
-          bgVariant="primary-light"
-          name="email"
-          value={email}
-          onChange={(event) => setEmail(event.target.value)}
+          name="identifier"
+          value={identifier}
+          onChange={(event) => setIdentifier(event.target.value)}
         />
         <TextField
           type="password"

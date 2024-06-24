@@ -1,4 +1,4 @@
-import { hash } from "bcryptjs";
+import { hash , compare } from "bcryptjs";
 import { sign } from "jsonwebtoken";
 
 const hashPassword = async (password: string) => {
@@ -12,4 +12,9 @@ const generateToken = (data: Record<string, any>) => {
     return token
 }
 
-export { hashPassword, generateToken };
+const comparePassword = async (password: string, hashedPassword: string) => {
+    const isMatch = await compare(password, hashedPassword);
+    return isMatch;
+}
+
+export { hashPassword, generateToken, comparePassword };
