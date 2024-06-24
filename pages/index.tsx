@@ -8,6 +8,7 @@ import Reservation from "@/components/templates/Home/Reservation";
 import Services from "@/components/templates/Home/Services";
 import Slider from "@/components/templates/Home/Slider";
 import Testimonial from "@/components/templates/Home/Testimonial";
+import PageLayout from "@/layout/PageLayout";
 
 interface DataProps {
   data: {
@@ -19,7 +20,7 @@ interface DataProps {
 
 function Index({ data }: DataProps) {
   return (
-    <div>
+    <PageLayout>
       <Slider />
       <About />
       <Services services={data.services} />
@@ -27,7 +28,7 @@ function Index({ data }: DataProps) {
       <Menu menu={data.menu} />
       <Reservation />
       <Testimonial comment={data.comment} />
-    </div>
+    </PageLayout>
   );
 }
 

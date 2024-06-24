@@ -11,6 +11,7 @@ const config: Config = {
       center: true,
       padding: "4rem",
       screens: {
+        xs: '340px',
         sm: '540px',
         md: '768px',
         lg: '992px',
@@ -23,7 +24,7 @@ const config: Config = {
       gray: "#A1A1A1",
       darkGray: "#313131",
       brown: "#33211d",
-      lightBrown:"#4f3319",
+      lightBrown: "#4f3319",
       transparent: "transparent",
       red: '#ef4444'
     },

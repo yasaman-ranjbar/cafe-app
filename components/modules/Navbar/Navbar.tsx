@@ -80,7 +80,7 @@ function Navbar() {
             className="text-white text-xl font-bold"
           />
         </span>
-        <span className="font-bold text-[2rem] text-white">
+        <span className="font-bold sm:text-[5px] md:text-[2rem] text-white">
           COFFEE APPLICATION
         </span>
 
@@ -100,7 +100,13 @@ function Navbar() {
           />
         </div>
       </div>
-      <div className="flex">
+      <span className="md:hidden xs:block">
+        <FontAwesomeIcon
+          icon={Icons["faBars"]}
+          className=" text-white text-xl font-bold"
+        />
+      </span>
+      <div className="hidden">
         {menu.map((item) => (
           <ul key={item.key}>
             <Link
