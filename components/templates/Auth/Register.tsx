@@ -1,14 +1,15 @@
 import { FormEvent, useState } from "react";
 import TextField from "@/components/modules/TextField/TextField";
 import { useRouter } from "next/router";
+import { register } from "module";
 
 const Register = () => {
-  const [firstname, setFirstName] = useState("");
-  const [lastname, setLastName] = useState("");
-  const [username, setUsername] = useState("");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const router = useRouter()
+  const [firstname, setFirstName] = useState<string>("");
+  const [lastname, setLastName] = useState<string>("");
+  const [username, setUsername] = useState<string>("");
+  const [email, setEmail] = useState<string>("");
+  const [password, setPassword] = useState<string>("");
+  const router = useRouter();
 
   const registerUser = async (event: FormEvent) => {
     event.preventDefault();
@@ -31,27 +32,13 @@ const Register = () => {
       password,
     };
 
-    const res = await fetch(`/api/auth/register`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(newUser),
-    });
-     await res.json();
-
-    if (res.status === 201) {
-      setFirstName("");
-      setLastName("");
-      setUsername("");
-      setEmail("");
-      setPassword("");
-      alert('Registered successfully')
-      router.push('/')
-    } else if(res.status === 422) {
-      alert('User already exists')
-    } 
-    
+    register(newUser as any);
+    router.push("/");
+    setFirstName("");
+    setLastName("");
+    setUsername("");
+    setEmail("");
+    setPassword("");
   };
 
   return (

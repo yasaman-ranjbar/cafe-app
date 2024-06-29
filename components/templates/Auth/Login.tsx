@@ -1,6 +1,7 @@
 import { FormEvent, useState } from "react";
 import TextField from "@/components/modules/TextField/TextField";
 import { useRouter } from "next/router";
+import { login } from "@/services/requests/auth";
 
 const Login = () => {
   const [identifier, setIdentifier] = useState("");
@@ -19,23 +20,11 @@ const Login = () => {
       password,
     };
 
-    const res = await fetch(`/api/auth/login`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(user),
-    });
-     await res.json();
-
+    const res = await login(user);
+    setIdentifier("");
+    setPassword("");
     if (res.status === 200) {
-      setIdentifier("");
-      setPassword("");
       router.replace("/");
-    } else if (res.status === 401) {
-      alert('Invalid credentials');
-    } else if (res.status === 404) { 
-      alert('User not found');
     }
   };
 
@@ -45,7 +34,6 @@ const Login = () => {
         Login to Coffee Application
       </h1>
       <form onSubmit={loginUser} className="flex flex-col gap-4">
-        
         <TextField
           type="text"
           variant="gray"
