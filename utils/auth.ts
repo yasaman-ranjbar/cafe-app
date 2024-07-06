@@ -1,5 +1,5 @@
-import { hash , compare } from "bcryptjs";
-import { sign } from "jsonwebtoken";
+import { hash, compare } from "bcryptjs";
+import { JwtPayload, sign, verify } from "jsonwebtoken";
 
 const hashPassword = async (password: string) => {
     const hashedPassword = await hash(password, 12); //by default 12
@@ -17,4 +17,13 @@ const comparePassword = async (password: string, hashedPassword: string) => {
     return isMatch;
 }
 
-export { hashPassword, generateToken, comparePassword };
+const verifyToken = (token: string): JwtPayload | null => {
+    try {
+        const data = verify(token, process.env.privateKey as string) as JwtPayload;
+        return data;
+    } catch (error) {
+        return null;
+    }
+}
+
+export { hashPassword, generateToken, comparePassword, verifyToken };

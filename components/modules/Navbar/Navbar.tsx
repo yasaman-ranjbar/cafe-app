@@ -106,7 +106,7 @@ function Navbar() {
           className=" text-white text-xl font-bold"
         />
       </span>
-      <div className="hidden">
+      <div className="block md:flex xs:hidden">
         {menu.map((item) => (
           <ul key={item.key}>
             <Link

@@ -19,3 +19,7 @@ export const login = async (user: UserLoginProps) => {
 export const register = async (user: UserRegisterProps) => {
     return httpRequest.post("/auth/register", user);
 }
+
+export const getMe = async () => {
+    return httpRequest.get("/auth/me");
+}

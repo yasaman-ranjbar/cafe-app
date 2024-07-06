@@ -1,7 +1,7 @@
 import { FormEvent, useState } from "react";
 import TextField from "@/components/modules/TextField/TextField";
 import { useRouter } from "next/router";
-import { register } from "module";
+import { register } from "@/services/requests/auth";
 
 const Register = () => {
   const [firstname, setFirstName] = useState<string>("");

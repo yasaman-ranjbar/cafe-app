@@ -2,6 +2,7 @@ import { FormEvent, useState } from "react";
 import TextField from "@/components/modules/TextField/TextField";
 import { useRouter } from "next/router";
 import { login } from "@/services/requests/auth";
+import Link from "next/link";
 
 const Login = () => {
   const [identifier, setIdentifier] = useState("");
@@ -60,6 +61,7 @@ const Login = () => {
           Login
         </button>
       </form>
+      <Link href='/register'>Register</Link>
     </div>
   );
 };

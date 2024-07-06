@@ -20,7 +20,6 @@ httpRequest.interceptors.request.use(
 
 httpRequest.interceptors.response.use(
     res => {
-        swal("Logged In successfully", "Success", "success");
         return res
     },
     (error) => {
