@@ -1,4 +1,4 @@
-import { ChangeEvent, KeyboardEventHandler, useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { NavbarProps } from "./navbar.types";
 import Link from "next/link";
 import "@fortawesome/fontawesome-svg-core/styles.css";
@@ -7,14 +7,44 @@ config.autoAddCss = false;
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import * as Icons from "@fortawesome/free-solid-svg-icons";
 import { useRouter } from "next/router";
+import DropDown from "../Dropdown/DropDown";
+import { DropDownItems } from "../Dropdown/dropdown.types";
+import { getMe, logout } from "@/services/requests/auth";
+
+interface UserProps {
+  firstname: string;
+  lastname: string;
+  role: string;
+  _id: string;
+}
 
 function Navbar() {
   const [showSubmenu, setShowSubmenu] = useState(false);
   const [activeMenu, setActiveMenu] = useState<string | null>(null);
-  const [search, setSearch] = useState('');
+  const [search, setSearch] = useState("");
   const ref = useRef<HTMLDivElement>(null);
   const link = useRef<any>(null);
-  const router = useRouter()
+  const router = useRouter();
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [user, setUser] = useState<UserProps>();
+
+  useEffect(() => {
+    const checkLogin = async () => {
+      try {
+        const res = await getMe();
+        if (res.status === 200) {
+          setIsLoggedIn(true);
+          setUser(res.data.data);
+        }
+        if(res.status === 401) {
+          
+        }
+      } catch (error) {
+        //
+      }
+    };
+    checkLogin();
+  }, [isLoggedIn, router]);
 
   const menu: NavbarProps[] = [
     { key: "1", title: "Home", link: "/", isSubmenu: false },
@@ -35,6 +65,11 @@ function Navbar() {
       ],
     },
     { key: "6", title: "Contact", link: "/contact", isSubmenu: false },
+  ];
+
+  const dropdownItem: DropDownItems[] = [
+    { title: "dashboard", link: "/dashboard" },
+    { title: "Profile", link: "/profile" },
   ];
 
   const toggleSubmenu = (key: string) => {
@@ -68,18 +103,48 @@ function Navbar() {
     if (search.trim()) {
       router.push(`/search?q=${search}`);
     }
-    
-  }
+  };
+
+  const logoutHandler = async () => {
+    const res = await logout();
+    if (res.status === 200) {
+      router.push("/login");
+    }
+    setIsLoggedIn(false);
+  };
 
   return (
-    <div className="p-3 flex justify-between items-center absolute z-50 w-full">
-      <div className="flex items-center gap-6">
-        <span>
+    <div className="py-6 px-12 flex justify-between items-center absolute z-50 w-full">
+      <div className="flex items-center gap-6 relative">
+        <span className="cursor-pointer  ">
+          {isLoggedIn ? (
+            <DropDown
+              items={dropdownItem}
+              hasHeader
+              headerTitle={user?.firstname + " " + user?.lastname}
+              hasFooter
+              footerTitle="Logout"
+              title={
+                <FontAwesomeIcon
+                  icon={Icons["faUserCircle"]}
+                  className="text-white text-xl font-bold"
+                />
+              }
+              footerHandler={logoutHandler}
+            />
+          ) : (
+            <Link href="/login" className="text-white">
+              Login
+            </Link>
+          )}
+        </span>
+        <span className="cursor-pointer">
           <FontAwesomeIcon
             icon={Icons["faShoppingCart"]}
             className="text-white text-xl font-bold"
           />
         </span>
+
         <span className="font-bold sm:text-[5px] md:text-[2rem] text-white">
           COFFEE APPLICATION
         </span>
@@ -106,6 +171,7 @@ function Navbar() {
           className=" text-white text-xl font-bold"
         />
       </span>
+
       <div className="block md:flex xs:hidden">
         {menu.map((item) => (
           <ul key={item.key}>

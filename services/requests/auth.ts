@@ -23,3 +23,7 @@ export const register = async (user: UserRegisterProps) => {
 export const getMe = async () => {
     return httpRequest.get("/auth/me");
 }
+
+export const logout = async () => {
+    return httpRequest.get("/auth/logout");
+}

@@ -6,7 +6,6 @@ import { useSearchParams } from "next/navigation";
 function Menu({ menu }: { menu: MenuProps[] }) {
   const searchparam = useSearchParams();
 
-  console.log("searchparam", searchparam.get("q"));
   return (
     <div className="container py-12">
       <SectionHeader header="Competitive Pricing" title="MENU & PRICING" />

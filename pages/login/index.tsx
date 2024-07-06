@@ -9,4 +9,20 @@ const index = () => {
   );
 };
 
+export const getServerSideProps = async(context: { req: Record<string, any> }) => {
+
+  const token = context.req.cookies.token;
+  if (token) {
+    return {
+      redirect: {
+        destination: "/",
+      },
+    };
+  }
+
+  return {
+    props: {},
+  };
+};
+
 export default index;

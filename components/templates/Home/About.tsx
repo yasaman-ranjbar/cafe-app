@@ -5,6 +5,8 @@ import { config } from "@fortawesome/fontawesome-svg-core";
 config.autoAddCss = false;
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import * as Icons from "@fortawesome/free-solid-svg-icons";
+import DropDown from "@/components/modules/Dropdown/DropDown";
+import { DropDownItems } from "@/components/modules/Dropdown/dropdown.types";
 
 function About() {
   return (
