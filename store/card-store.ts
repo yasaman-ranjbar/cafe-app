@@ -3,6 +3,8 @@ import { create } from 'zustand';
 
 type CardsProp = {
     cards: MenuProps[]
+    addCard: (product: MenuProps) => void;
+    removeCard: (id: number) => void;
 }
 
 export const useCard = create<CardsProp>((set) => ({

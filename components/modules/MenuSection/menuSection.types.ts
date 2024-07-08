@@ -1,5 +1,5 @@
 export type MenuProps = {
-    id?: 1;
+    id?: number;
     title: string;
     desc: string;
     price: number;

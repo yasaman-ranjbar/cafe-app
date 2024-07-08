@@ -12,7 +12,7 @@
     },
     {
       "id": "4",
-      "title": "Black Coffee",
+      "title": "Iced Frappuccino",
       "desc": "Sit lorem ipsum et diam elitr est dolor sed duo guberg sea et et lorem dolor",
       "price": 50,
       "img": "/images/menu-1.jpg",
@@ -32,7 +32,7 @@
     },
     {
       "id": "5",
-      "title": "Chocolete Coffee",
+      "title": "Iced Latte",
       "desc": "Sit lorem ipsum et diam elitr est dolor sed duo guberg sea et et lorem dolor",
       "price": 70,
       "img": "/images/menu-2.jpg",
@@ -52,7 +52,7 @@
     },
     {
       "id": "6",
-      "title": "Coffee With Milk",
+      "title": "Iced Black Coffee",
       "desc": "Sit lorem ipsum et diam elitr est dolor sed duo guberg sea et et lorem dolor",
       "price": 90,
       "img": "/images/menu-3.jpg",

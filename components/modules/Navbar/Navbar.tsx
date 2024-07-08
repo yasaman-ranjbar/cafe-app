@@ -10,6 +10,7 @@ import { useRouter } from "next/router";
 import DropDown from "../Dropdown/DropDown";
 import { DropDownItems } from "../Dropdown/dropdown.types";
 import { getMe, logout } from "@/services/requests/auth";
+import { useCard } from "@/store/card-store";
 
 interface UserProps {
   firstname: string;
@@ -26,7 +27,28 @@ function Navbar() {
   const link = useRef<any>(null);
   const router = useRouter();
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [showViewPort, setShowViewPort] = useState(false);
   const [user, setUser] = useState<UserProps>();
+
+  const cards = useCard((state) => state.cards);
+
+  useEffect(() => {
+    
+    window.addEventListener("scroll", () => {
+      if (window.scrollY > 200) {
+        setShowViewPort(true);
+      
+      } else {
+        setShowViewPort(false);
+      }
+    });
+
+    return () => {
+      window.removeEventListener("scroll", () => {});
+    };
+
+  }, [])
+  
 
   useEffect(() => {
     const checkLogin = async () => {
@@ -36,8 +58,7 @@ function Navbar() {
           setIsLoggedIn(true);
           setUser(res.data.data);
         }
-        if(res.status === 401) {
-          
+        if (res.status === 401) {
         }
       } catch (error) {
         //
@@ -113,96 +134,106 @@ function Navbar() {
     setIsLoggedIn(false);
   };
 
+
+
   return (
-    <div className="py-6 px-12 flex justify-between items-center absolute z-50 w-full">
-      <div className="flex items-center gap-6 relative">
-        <span className="cursor-pointer  ">
-          {isLoggedIn ? (
-            <DropDown
-              items={dropdownItem}
-              hasHeader
-              headerTitle={user?.firstname + " " + user?.lastname}
-              hasFooter
-              footerTitle="Logout"
-              title={
-                <FontAwesomeIcon
-                  icon={Icons["faUserCircle"]}
-                  className="text-white text-xl font-bold"
-                />
-              }
-              footerHandler={logoutHandler}
-            />
-          ) : (
-            <Link href="/login" className="text-white">
-              Login
-            </Link>
-          )}
-        </span>
-        <span className="cursor-pointer">
-          <FontAwesomeIcon
-            icon={Icons["faShoppingCart"]}
-            className="text-white text-xl font-bold"
-          />
-        </span>
-
-        <span className="font-bold sm:text-[5px] md:text-[2rem] text-white">
-          COFFEE APPLICATION
-        </span>
-
-        <div className="flex gap-2 items-center relative border-b border-white">
-          <input
-            value={search}
-            onChange={(event) => setSearch(event.target.value)}
-            onKeyDown={searchHandlerWithEnter}
-            type="text"
-            className=" outline-none bg-transparent  h-10 text-yellow"
-            placeholder="Search..."
-          />
-          <FontAwesomeIcon
-            icon={Icons["faSearch"]}
-            className="text-white text-lg font-bold"
-            onClick={searchHandler}
-          />
-        </div>
-      </div>
-      <span className="md:hidden xs:block">
-        <FontAwesomeIcon
-          icon={Icons["faBars"]}
-          className=" text-white text-xl font-bold"
-        />
-      </span>
-
-      <div className="block md:flex xs:hidden">
-        {menu.map((item) => (
-          <ul key={item.key}>
-            <Link
-              ref={link}
-              id="submenu"
-              className={`${
-                item.submenu ? "submenu" : ""
-              } px-3.5 py-2 relative font-bold text-lg text-white hover:text-yellow`}
-              href={item.isSubmenu ? "" : item.link}
-              onClick={
-                item.isSubmenu ? () => toggleSubmenu(item.key) : undefined
-              }
-            >
-              {item.title}
-            </Link>
-            {showSubmenu && item.submenu && (
-              <div ref={ref} className="absolute top-[4.5rem] bg-white py-2">
-                {item.submenu.map((subItem) => (
-                  <Link
-                    className="flex flex-col hover:bg-orange-300 px-3 py-1 font-normal tracking-wider"
-                    href={subItem.link}
-                    key={subItem.title}
-                  >
-                    {subItem.title}
-                  </Link>
-                ))}
-              </div>
+    <div className="sticky top-0 z-[999] bg-darkGray">
+      <div
+        className={`${showViewPort ? 'bg-brown/90' : ''} transition ease-in-out py-6 px-12 flex justify-between items-center w-full absolute`}
+      >
+        <div className="flex items-center gap-6 relative">
+          <span className="cursor-pointer  ">
+            {isLoggedIn ? (
+              <DropDown
+                items={dropdownItem}
+                hasHeader
+                headerTitle={user?.firstname + " " + user?.lastname}
+                hasFooter
+                footerTitle="Logout"
+                title={
+                  <FontAwesomeIcon
+                    icon={Icons["faUserCircle"]}
+                    className="text-white text-xl font-bold"
+                  />
+                }
+                footerHandler={logoutHandler}
+              />
+            ) : (
+              <Link href="/login" className="text-white">
+                Login
+              </Link>
             )}
-          </ul>
-        ))}
+          </span>
+          <span className="cursor-pointer relative">
+            <div className="absolute -top-3 -left-1 bg-yellow size-5 font-bold flex justify-center items-center rounded-full text-primary">
+              {cards.length}
+            </div>
+            <FontAwesomeIcon
+              onClick={() => router.push("/cart")}
+              icon={Icons["faShoppingCart"]}
+              className="text-white text-xl font-bold"
+            />
+          </span>
+
+          <span className="font-bold sm:text-[5px] md:text-[2rem] text-white">
+            COFFEE APPLICATION
+          </span>
+
+          <div className="flex gap-2 items-center relative border-b border-white">
+            <input
+              value={search}
+              onChange={(event) => setSearch(event.target.value)}
+              onKeyDown={searchHandlerWithEnter}
+              type="text"
+              className=" outline-none bg-transparent  h-10 text-yellow"
+              placeholder="Search..."
+            />
+            <FontAwesomeIcon
+              icon={Icons["faSearch"]}
+              className="text-white text-lg font-bold"
+              onClick={searchHandler}
+            />
+          </div>
+        </div>
+        <span className="md:hidden xs:block">
+          <FontAwesomeIcon
+            icon={Icons["faBars"]}
+            className=" text-white text-xl font-bold"
+          />
+        </span>
+
+        <div className="block md:flex xs:hidden">
+          {menu.map((item) => (
+            <ul key={item.key}>
+              <Link
+                ref={link}
+                id="submenu"
+                className={`${
+                  item.submenu ? "submenu" : ""
+                } px-3.5 py-2 relative font-bold text-lg text-white hover:text-yellow`}
+                href={item.isSubmenu ? "" : item.link}
+                onClick={
+                  item.isSubmenu ? () => toggleSubmenu(item.key) : undefined
+                }
+              >
+                {item.title}
+              </Link>
+              {showSubmenu && item.submenu && (
+                <div ref={ref} className="absolute top-[4.5rem] bg-white py-2">
+                  {item.submenu.map((subItem) => (
+                    <Link
+                      className="flex flex-col hover:bg-orange-300 px-3 py-1 font-normal tracking-wider"
+                      href={subItem.link}
+                      key={subItem.title}
+                    >
+                      {subItem.title}
+                    </Link>
+                  ))}
+                </div>
+              )}
+            </ul>
+          ))}
+        </div>
       </div>
     </div>
   );
