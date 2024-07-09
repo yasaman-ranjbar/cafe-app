@@ -7,4 +7,5 @@ export type MenuProps = {
     off?: number;
     score?: number;
     type?: "cold" | "hot";
+    qt:number;
 };

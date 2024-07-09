@@ -16,21 +16,21 @@ export async function getServerSideProps(context: {
   req: Record<string, any>;
 }) {
   const token = context.req.cookies.token;
-  if (!token) {
-    return {
-      redirect: {
-        destination: "/login",
-      },
-    };
-  }
-  const payloadData = verifyToken(token);
-  if (!payloadData) {
-    return {
-      redirect: {
-        destination: "/login",
-      },
-    };
-  }
+  // if (!token) {
+  //   return {
+  //     redirect: {
+  //       destination: "/login",
+  //     },
+  //   };
+  // }
+  // const payloadData = verifyToken(token);
+  // if (!payloadData) {
+  //   return {
+  //     redirect: {
+  //       destination: "/login",
+  //     },
+  //   };
+  // }
 
   return {
     props: {},

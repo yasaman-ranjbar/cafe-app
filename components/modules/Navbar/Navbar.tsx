@@ -11,6 +11,8 @@ import DropDown from "../Dropdown/DropDown";
 import { DropDownItems } from "../Dropdown/dropdown.types";
 import { getMe, logout } from "@/services/requests/auth";
 import { useCard } from "@/store/card-store";
+import Drawer from "../Drawer/Drawer";
+import CartDrawer from "@/components/templates/Cart/CartDrawer";
 
 interface UserProps {
   firstname: string;
@@ -29,15 +31,14 @@ function Navbar() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [showViewPort, setShowViewPort] = useState(false);
   const [user, setUser] = useState<UserProps>();
+  const [isOpen, setIsOpen] = useState(false);
 
   const cards = useCard((state) => state.cards);
 
   useEffect(() => {
-    
     window.addEventListener("scroll", () => {
       if (window.scrollY > 200) {
         setShowViewPort(true);
-      
       } else {
         setShowViewPort(false);
       }
@@ -46,9 +47,7 @@ function Navbar() {
     return () => {
       window.removeEventListener("scroll", () => {});
     };
-
-  }, [])
-  
+  }, []);
 
   useEffect(() => {
     const checkLogin = async () => {
@@ -134,12 +133,16 @@ function Navbar() {
     setIsLoggedIn(false);
   };
 
-
+  const toggleDrawer = () => {
+    setIsOpen(!isOpen);
+  };
 
   return (
     <div className="sticky top-0 z-[999] bg-darkGray">
       <div
-        className={`${showViewPort ? 'bg-brown/90' : ''} transition ease-in-out py-6 px-12 flex justify-between items-center w-full absolute`}
+        className={`${
+          showViewPort ? "bg-brown/90" : ""
+        } transition ease-in-out py-6 px-12 flex justify-between items-center w-full absolute`}
       >
         <div className="flex items-center gap-6 relative">
           <span className="cursor-pointer  ">
@@ -169,10 +172,13 @@ function Navbar() {
               {cards.length}
             </div>
             <FontAwesomeIcon
-              onClick={() => router.push("/cart")}
+              onClick={toggleDrawer}
               icon={Icons["faShoppingCart"]}
               className="text-white text-xl font-bold"
             />
+            <Drawer isOpen={isOpen} toggleDrawer={toggleDrawer}>
+              <CartDrawer />
+            </Drawer>
           </span>
 
           <span className="font-bold sm:text-[5px] md:text-[2rem] text-white">

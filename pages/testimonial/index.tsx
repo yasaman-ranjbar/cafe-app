@@ -1,6 +1,7 @@
 import PageHeader from "@/components/modules/PageHeader/PageHeader";
 import { TestimonialProps } from "@/components/modules/Testimonial/testimonial.types";
 import Testimonial from "@/components/templates/Home/Testimonial";
+import PageLayout from "@/layout/PageLayout";
 
 interface CommentDataProps {
   comment: TestimonialProps[];
@@ -8,10 +9,10 @@ interface CommentDataProps {
 
 function Index({ comment }: CommentDataProps) {
   return (
-    <>
+    <PageLayout>
       <PageHeader title="testimonial" route="Testimonial" />
       <Testimonial comment={comment} />
-    </>
+    </PageLayout>
   );
 }
 

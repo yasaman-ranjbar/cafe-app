@@ -29,9 +29,9 @@ httpRequest.interceptors.response.use(
     // if (error.response.status === 401) {
     //     swal("error", "Invalid credentials", "error");
     // }
-    if (error.response.status === 422) {
+    if (error?.response?.status === 422) {
       swal("error", "already exists", "error");
-    } else if (error.response.status === 404) {
+    } else if (error.response?.status === 404) {
       swal("error", "User not found", "error");
     }
     return error.response;

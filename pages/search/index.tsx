@@ -1,13 +1,14 @@
 import { MenuProps } from "@/components/modules/MenuSection/menuSection.types";
 import PageHeader from "@/components/modules/PageHeader/PageHeader";
 import Menu from "@/components/templates/Home/Menu";
+import PageLayout from "@/layout/PageLayout";
 
 function Index({ data }: { data: MenuProps[] }) {
   return (
-    <>
+    <PageLayout>
       <PageHeader title="Search" route="Search" />
       <Menu menu={data} />
-    </>
+    </PageLayout>
   );
 }
 export const getServerSideProps = async (context: { [key: string]: any }) => {

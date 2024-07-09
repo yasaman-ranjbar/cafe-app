@@ -3,12 +3,12 @@ import { MenuProps } from "./menuSection.types";
 import Link from "next/link";
 import { useCard } from "@/store/card-store";
 
-const MenuSection: React.FC<MenuProps> = ({ title, price, img, desc, id }) => {
+const MenuSection: React.FC<MenuProps> = ({ title, price, img, desc, id, type, off, qt }) => {
   const addCard = useCard((state) => state.addCard);
   const cards = useCard((state) => state.cards);
 
   const addToCart = (id: number) => {
-    addCard({ id, title, price, img, desc });
+    addCard({ id, title, price, type,  img, desc , off, qt });
   };
 
   console.log("cards", cards);

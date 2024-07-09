@@ -8,7 +8,8 @@
       "img": "/images/menu-1.jpg",
       "off": 10,
       "type": "hot",
-      "score": 5
+      "score": 5,
+      "qt":1
     },
     {
       "id": "4",
@@ -18,7 +19,8 @@
       "img": "/images/menu-1.jpg",
       "off": 0,
       "type": "cold",
-      "score": 3.9
+      "score": 3.9,
+      "qt":1
     },
     {
       "id": "2",
@@ -28,7 +30,8 @@
       "img": "/images/menu-2.jpg",
       "off": 5,
       "type": "hot",
-      "score": 2.2
+      "score": 2.2,
+      "qt":1
     },
     {
       "id": "5",
@@ -38,7 +41,8 @@
       "img": "/images/menu-2.jpg",
       "off": 5,
       "type": "cold",
-      "score": 4.3
+      "score": 4.3,
+      "qt":1
     },
     {
       "id": "3",
@@ -48,7 +52,8 @@
       "img": "/images/menu-3.jpg",
       "off": 20,
       "type": "hot",
-      "score": 4.4
+      "score": 4.4,
+      "qt":1
     },
     {
       "id": "6",
@@ -58,7 +63,8 @@
       "img": "/images/menu-3.jpg",
       "off": 0,
       "type": "cold",
-      "score": 3.7
+      "score": 3.7,
+      "qt":1
     }
   ],
   "services": [

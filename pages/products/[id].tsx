@@ -3,6 +3,7 @@ import { TestimonialProps } from "@/components/modules/Testimonial/testimonial.t
 import ProductComments from "@/components/templates/Comments/ProductComments";
 import Testimonial from "@/components/templates/Home/Testimonial";
 import ProductDetails from "@/components/templates/Products/ProductDetails";
+import PageLayout from "@/layout/PageLayout";
 
 interface CommentDataProps {
   comment: TestimonialProps[];
@@ -11,10 +12,10 @@ interface CommentDataProps {
 
 function Index({ product, comment }: CommentDataProps) {
   return (
-    <>
+    <PageLayout>
       <ProductDetails product={product} />
       <ProductComments comment={comment} />
-    </>
+    </PageLayout>
   );
 }
 
