@@ -1,7 +1,9 @@
-import PageLayout from "@/layout/PageLayout";
 import "@/styles/globals.css";
 import { NextPage } from "next";
+import Head from "next/head";
 import { ReactElement, ReactNode } from "react";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 interface AppProps {
   Component: React.ComponentType;
@@ -17,14 +19,14 @@ type AppPropsWithLayout = AppProps & {
 };
 
 export default function App({ Component, pageProps }: AppPropsWithLayout) {
-  const getLayout =
-    Component.getLayout ?? ((page) => page);
-  return getLayout(<Component {...pageProps} />);
-  // return (
-  //   <div className="bg-primary-light min-h-screen relative overflow-x-hidden">
-  //     <PageLayout>
-  //       <Component {...pageProps} />
-  //     </PageLayout>
-  //   </div>
-  // );
+  const getLayout = Component.getLayout ?? ((page) => page);
+  return getLayout(
+    <>
+      <Head>
+        <meta name="author" content="coffee application" />
+      </Head>
+      <Component {...pageProps} />
+      <ToastContainer />
+    </>
+  );
 }

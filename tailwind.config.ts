@@ -35,6 +35,7 @@ const config: Config = {
       white: "#fff",
       gray: "#555555",
       red: "#ef4444",
+      lightGray: "#EEEEEE",
     },
     extend: {
       backgroundColor: {

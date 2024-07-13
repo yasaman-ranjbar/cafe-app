@@ -1,5 +1,5 @@
 import axios from "axios";
-import swal from "sweetalert";
+import { toast } from "react-toastify";
 
 const httpRequest = axios.create({
   baseURL: "http://localhost:3000/api",
@@ -15,7 +15,7 @@ httpRequest.interceptors.request.use(
   },
   (error) => {
     if (error.response.status === 401) {
-      swal("error", "Invalid credentials", "error");
+      toast.error("Invalid credentials");
     }
   }
 );
@@ -25,14 +25,12 @@ httpRequest.interceptors.response.use(
     return res;
   },
   (error) => {
-    console.log("response error", error);
     // if (error.response.status === 401) {
-    //     swal("error", "Invalid credentials", "error");
     // }
     if (error?.response?.status === 422) {
-      swal("error", "already exists", "error");
+      toast.error("User is already exist");
     } else if (error.response?.status === 404) {
-      swal("error", "User not found", "error");
+      toast.error("User not found");
     }
     return error.response;
   }

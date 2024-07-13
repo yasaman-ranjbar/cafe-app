@@ -4,15 +4,15 @@ import SectionHeader from "@/components/modules/SectionHeader/SectionHeader";
 import { useSearchParams } from "next/navigation";
 
 function Menu({ menu }: { menu: MenuProps[] }) {
-  const searchparam = useSearchParams();
+  const searchParam = useSearchParams();
 
   return (
     <div className="container py-12">
       <SectionHeader header="Competitive Pricing" title="MENU & PRICING" />
       <h2 className="text-primary text-4xl font-bold mb-12">
-        {searchparam.get("q") === "hot" ? (
+        {searchParam.get("q") === "hot" ? (
           "Hot Coffee"
-        ) : searchparam.get("q") === "cold" ? (
+        ) : searchParam.get("q") === "cold" ? (
           "Cold Coffee"
         ) : (
           <div className="grid grid-cols-2">

@@ -5,7 +5,7 @@ interface LoginLayoutProps {
 
 const LoginLayout = ({ children }: LoginLayoutProps) => {
   return (
-    <div className="flex justify-center items-center container min-h-screen">{children}</div>
+    <div className=" flex justify-center items-center container min-h-screen">{children}</div>
   );
 };
 

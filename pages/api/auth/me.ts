@@ -3,6 +3,9 @@ import { verifyToken } from "@/utils/auth";
 import UserModel from "@/models/User";
 
 const handler = async (req: any, res: any) => {
+    // if req to this api redirect
+    // res.redirect("/api/auth/login");
+
     if (req.method !== 'GET') {
         return false
     }

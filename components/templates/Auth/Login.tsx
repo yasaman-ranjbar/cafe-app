@@ -3,6 +3,7 @@ import TextField from "@/components/modules/TextField/TextField";
 import { useRouter } from "next/router";
 import { login } from "@/services/requests/auth";
 import Link from "next/link";
+import { toast } from "react-toastify";
 
 const Login = () => {
   const [identifier, setIdentifier] = useState("");
@@ -26,8 +27,11 @@ const Login = () => {
     setPassword("");
     if (res.status === 200) {
       router.replace("/");
+      toast.success("successfully logged in");
     }
   };
+
+  const notify = () => toast("Wow so easy!");
 
   return (
     <div className="w-full sm:px-[1rem] md:px-[15rem]">
@@ -61,7 +65,7 @@ const Login = () => {
           Login
         </button>
       </form>
-      <Link href='/register'>Register</Link>
+      <Link href="/register">Register</Link>
     </div>
   );
 };

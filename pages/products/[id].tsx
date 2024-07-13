@@ -4,18 +4,26 @@ import ProductComments from "@/components/templates/Comments/ProductComments";
 import Testimonial from "@/components/templates/Home/Testimonial";
 import ProductDetails from "@/components/templates/Products/ProductDetails";
 import PageLayout from "@/layout/PageLayout";
+import Head from "next/head";
 
 interface CommentDataProps {
   comment: TestimonialProps[];
   product: MenuProps;
+  head: Record<string, string>;
 }
 
-function Index({ product, comment }: CommentDataProps) {
+function Index({ product, comment, head }: CommentDataProps) {
   return (
-    <PageLayout>
-      <ProductDetails product={product} />
-      <ProductComments comment={comment} />
-    </PageLayout>
+    <>
+    <Head>
+      <title>{head.title}</title>
+      <meta name="description" content={head.description} />
+    </Head>
+      <PageLayout>
+        <ProductDetails product={product} />
+        <ProductComments comment={comment} />
+      </PageLayout>
+    </>
   );
 }
 
@@ -49,6 +57,11 @@ export async function getStaticProps(context: { params: { id: string } }) {
 
     return {
       props: {
+        head: {
+          title: `Coffee Shop | ${product.title}`,
+          description: `Coffee Shop | ${product.title}`,
+          canonical: `https://coffee-shop-nextjs.vercel.app/products/${product.id}`,
+        },
         product,
         comment: productComments,
       },

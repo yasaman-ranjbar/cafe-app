@@ -10,11 +10,11 @@ import { useCard } from "@/store/card-store";
 const CartProduct = ({
   removeProduct,
   increaseProduct,
+  decreaseProduct,
 }: CartProductProps) => {
-
   const cart = useCard((state) => state.cards);
 
-  console.log(cart)
+  console.log(cart);
 
   return (
     <>
@@ -51,7 +51,7 @@ const CartProduct = ({
                 />
               ) : (
                 <FontAwesomeIcon
-                  onClick={() => increaseProduct(product.id!)}
+                  onClick={() => decreaseProduct(product.id!)}
                   icon={Icons["faMinus"]}
                   className="text-primary text-lg font-bold"
                 />

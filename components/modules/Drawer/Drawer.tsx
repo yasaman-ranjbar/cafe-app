@@ -5,25 +5,23 @@ config.autoAddCss = false;
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import * as Icons from "@fortawesome/free-solid-svg-icons";
 
+
 const Drawer: React.FC<DrawerProps> = ({ isOpen, toggleDrawer, children }) => {
   return (
     <div
-      className={`fixed top-0 left-0 min-w-96 h-full bg-white text-Primary transition-transform transform ${
-        isOpen ? "translate-x-0" : "-translate-x-full"
-      }`}
+      className={`fixed top-0 right-0 w-64 bg-white h-full shadow-lg transform ${
+        isOpen ? "translate-x-0" : "translate-x-full"
+      } transition-transform duration-300 ease-in-out z-50`}
     >
-      {/* <button
-        className="p-2 bg-red-500 text-primary rounded m-2"
-        onClick={toggleDrawer}
-      > */}
-      <FontAwesomeIcon
-        onClick={toggleDrawer}
-        icon={Icons["faClose"]}
-        className="text-gay text-lg font-bold"
-      />
+      <div className="flex justify-end p-8 ">
+        <FontAwesomeIcon
+          onClick={toggleDrawer}
+          icon={Icons["faClose"]}
+          className="text-primary/75 text-lg font-bold"
+        />
+      </div>
 
-      {/* </button> */}
-      <div className="pt-12 px-4">{children}</div>
+      <div className={"pt-12 px-4"}>{children}</div>
     </div>
   );
 };

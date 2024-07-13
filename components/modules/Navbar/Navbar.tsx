@@ -167,7 +167,7 @@ function Navbar() {
               </Link>
             )}
           </span>
-          <span className="cursor-pointer relative">
+          <span className="cursor-pointer relative ">
             <div className="absolute -top-3 -left-1 bg-yellow size-5 font-bold flex justify-center items-center rounded-full text-primary">
               {cards.length}
             </div>
@@ -176,9 +176,9 @@ function Navbar() {
               icon={Icons["faShoppingCart"]}
               className="text-white text-xl font-bold"
             />
-            <Drawer isOpen={isOpen} toggleDrawer={toggleDrawer}>
-              <CartDrawer />
-            </Drawer>
+              <Drawer isOpen={isOpen} toggleDrawer={toggleDrawer}>
+                <CartDrawer />
+              </Drawer>
           </span>
 
           <span className="font-bold sm:text-[5px] md:text-[2rem] text-white">

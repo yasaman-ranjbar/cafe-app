@@ -9,6 +9,7 @@ import Services from "@/components/templates/Home/Services";
 import Slider from "@/components/templates/Home/Slider";
 import Testimonial from "@/components/templates/Home/Testimonial";
 import PageLayout from "@/layout/PageLayout";
+import Head from "next/head";
 
 interface DataProps {
   data: {
@@ -20,15 +21,24 @@ interface DataProps {
 
 function Index({ data }: DataProps) {
   return (
-    <PageLayout>
-      <Slider />
-      <About />
-      <Services services={data.services} />
-      <Offer />
-      <Menu menu={data.menu} />
-      <Reservation />
-      <Testimonial comment={data.comment} />
-    </PageLayout>
+    <>
+      <Head>
+        <title>coffee application</title>
+        <meta
+          name="description"
+          content="coffee application to book a table and reserve your coffee"
+        />
+      </Head>
+      <PageLayout>
+        <Slider />
+        <About />
+        <Services services={data.services} />
+        <Offer />
+        <Menu menu={data.menu} />
+        <Reservation />
+        <Testimonial comment={data.comment} />
+      </PageLayout>
+    </>
   );
 }
 

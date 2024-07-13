@@ -2,6 +2,7 @@ import { FormEvent, useState } from "react";
 import TextField from "@/components/modules/TextField/TextField";
 import { useRouter } from "next/router";
 import { register } from "@/services/requests/auth";
+import { toast } from "react-toastify";
 
 const Register = () => {
   const [firstname, setFirstName] = useState<string>("");
@@ -32,13 +33,16 @@ const Register = () => {
       password,
     };
 
-    register(newUser as any);
-    router.push("/");
-    setFirstName("");
-    setLastName("");
-    setUsername("");
-    setEmail("");
-    setPassword("");
+    const res = await register(newUser as any);
+    if (res.status === 200) {
+      router.push("/");
+      toast.success("successfully registered");
+      setFirstName("");
+      setLastName("");
+      setUsername("");
+      setEmail("");
+      setPassword("");
+    }
   };
 
   return (
