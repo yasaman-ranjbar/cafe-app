@@ -1,5 +1,7 @@
 import { useState } from "react";
 import TextField, { Textarea } from "../TextField/TextField";
+import { useForm } from "react-hook-form";
+import {IContact} from "@/components/modules/Contact/types";
 
 const ContactForm = () => {
   const [contact, setContact] = useState({
@@ -9,16 +11,18 @@ const ContactForm = () => {
     message: "",
   });
 
+  const {handleSubmit} = useForm<IContact>();
+
   const changeHandler = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
     setContact({ ...contact, [e.target.name]: e.target.value });
   };
 
-  const sendMessage = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
+  const onsubmit = async (data: IContact) => {
+    // e.preventDefault();
     console.log(contact);
-    if (contact.name === "" || contact.email === "" || contact.message === "" || contact.subject === "") {
+    if (!data) {
       alert("Please fill all the fields");
       return;
     } else {
@@ -47,15 +51,13 @@ const ContactForm = () => {
 
   return (
     <div className="flex-1">
-      <form onSubmit={sendMessage} className="flex flex-col gap-4">
+      <form onSubmit={handleSubmit(onsubmit)} className="flex flex-col gap-4">
         <TextField
           type="text"
           variant="gray"
           placeholder="Your Name"
           bgVariant="primary-light"
           name="name"
-          value={contact.name}
-          onChange={changeHandler}
         />
         <TextField
           type="text"
@@ -63,8 +65,6 @@ const ContactForm = () => {
           placeholder="Your Email"
           bgVariant="primary-light"
           name="email"
-          value={contact.email}
-          onChange={changeHandler}
         />
         <TextField
           type="text"
@@ -72,8 +72,6 @@ const ContactForm = () => {
           placeholder="Subject"
           bgVariant="primary-light"
           name="subject"
-          value={contact.subject}
-          onChange={changeHandler}
         />
 
         <Textarea
@@ -81,8 +79,6 @@ const ContactForm = () => {
           variant="gray"
           bgVariant="primary-light"
           name="message"
-          value={contact.message}
-          onChange={changeHandler}
         />
         <button
           type="submit"

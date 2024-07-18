@@ -2,7 +2,7 @@ import "@/styles/globals.css";
 import { NextPage } from "next";
 import Head from "next/head";
 import { ReactElement, ReactNode } from "react";
-import { ToastContainer, toast } from "react-toastify";
+import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 interface AppProps {
