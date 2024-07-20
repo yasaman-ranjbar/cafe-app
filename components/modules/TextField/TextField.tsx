@@ -43,7 +43,7 @@ const TextField = forwardRef(
             error
               ? "focus:ring-2 ring-offset-1 ring-offset-red ring-red/30 focus:border-red/35 border border-red"
               : "focus:ring-2 ring-offset-1 ring-offset-yellow ring-yellow/30 focus:border-yellow/35"
-          } h-[3.125rem] rounded-md outline-none border border-${variant} p-6 bg-${bgVariant} w-full  `}
+          } h-[3.125rem] rounded-md outline-none border border-${variant} p-6 bg-${bgVariant} w-full placeholder:font-semibold `}
           placeholder={placeholder}
           type={type}
           name={name}
