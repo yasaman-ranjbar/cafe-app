@@ -1,91 +1,75 @@
-import { useState } from "react";
 import TextField, { Textarea } from "../TextField/TextField";
-import { useForm } from "react-hook-form";
-import {IContact} from "@/components/modules/Contact/types";
+import { useForm, Controller } from "react-hook-form";
+import { IContact } from "@/components/modules/Contact/types";
+import { toast } from "react-toastify";
+import { contact } from "@/services/requests/contact";
+import IButton from "../Button/Button";
 
 const ContactForm = () => {
-  const [contact, setContact] = useState({
-    name: "",
-    email: "",
-    subject: "",
-    message: "",
-  });
+  const { handleSubmit, register, setValue, formState: {errors} } = useForm<IContact>();
 
-  const {handleSubmit} = useForm<IContact>();
-
-  const changeHandler = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
-  ) => {
-    setContact({ ...contact, [e.target.name]: e.target.value });
-  };
-
-  const onsubmit = async (data: IContact) => {
-    // e.preventDefault();
-    console.log(contact);
-    if (!data) {
-      alert("Please fill all the fields");
+  const onSubmit = async (data: IContact) => {
+    if (data.name === '' || data.email === "" || data.message === "") {
+      toast.error("Please fill all the fields");
       return;
     } else {
-      const res = await fetch("http://localhost:4000/messages", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(contact),
-        
-      })
+      const res = await contact(data);
       if (res.status === 201) {
-        alert("Message sent successfully");
-      } else {
-        alert("Something went wrong");
+        toast.success(res.data.message);
+        setValue("name", "");
+        setValue("email", "");
+        setValue("subject", "");
+        setValue("message", "");
       }
-      setContact({
-        name: "",
-        email: "",
-        subject: "",
-        message: "",
-      });
     }
-    
   };
+  console.log("error" , errors)
 
   return (
     <div className="flex-1">
-      <form onSubmit={handleSubmit(onsubmit)} className="flex flex-col gap-4">
+      <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-4">
         <TextField
+          {...register("name", {
+            required: "Name is required",
+          })}
           type="text"
           variant="gray"
           placeholder="Your Name"
           bgVariant="primary-light"
-          name="name"
+          error={errors.name?.message}
         />
         <TextField
+          {...register("email", {
+            required: "Email is required",
+          })}
           type="text"
           variant="gray"
           placeholder="Your Email"
           bgVariant="primary-light"
-          name="email"
+          error={errors.email?.message}
         />
         <TextField
+          {...register("subject", {
+            required: "Subject is required",
+          })}
           type="text"
           variant="gray"
           placeholder="Subject"
           bgVariant="primary-light"
-          name="subject"
+          error={errors.subject?.message}
         />
-
         <Textarea
+          {...register("message", {
+            required: "Message is required",
+          })}
           placeholder="Message"
           variant="gray"
           bgVariant="primary-light"
-          name="message"
+          error={errors.message?.message}
         />
-        <button
-          type="submit"
-          className="bg-yellow text-primary py-2 font-bold inline-block px-6"
-        >
+        <IButton type="submit" variant="secondary">
           Send Message
-        </button>
+        </IButton>
       </form>
     </div>
   );

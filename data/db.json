@@ -9,7 +9,7 @@
       "off": 10,
       "type": "hot",
       "score": 5,
-      "qt":1
+      "qt": 1
     },
     {
       "id": "4",
@@ -20,7 +20,7 @@
       "off": 0,
       "type": "cold",
       "score": 3.9,
-      "qt":1
+      "qt": 1
     },
     {
       "id": "2",
@@ -31,7 +31,7 @@
       "off": 5,
       "type": "hot",
       "score": 2.2,
-      "qt":1
+      "qt": 1
     },
     {
       "id": "5",
@@ -42,7 +42,7 @@
       "off": 5,
       "type": "cold",
       "score": 4.3,
-      "qt":1
+      "qt": 1
     },
     {
       "id": "3",
@@ -53,7 +53,7 @@
       "off": 20,
       "type": "hot",
       "score": 4.4,
-      "qt":1
+      "qt": 1
     },
     {
       "id": "6",
@@ -64,33 +64,33 @@
       "off": 0,
       "type": "cold",
       "score": 3.7,
-      "qt":1
+      "qt": 1
     }
   ],
   "services": [
     {
-      "id": 1,
+      "id": "1",
       "title": "Fastest Door Delivery",
       "img": "/images/service-1.jpg",
       "desc": "Sit lorem ipsum et diam elitr est dolor sed duo. Guberg sea et et lorem dolor sed est sit invidunt, dolore tempor diam ipsum takima erat tempor",
       "icon": "faTruck"
     },
     {
-      "id": 2,
+      "id": "2",
       "title": "Fastest Door Delivery",
       "img": "/images/service-2.jpg",
       "desc": "Sit lorem ipsum et diam elitr est dolor sed duo. Guberg sea et et lorem dolor sed est sit invidunt, dolore tempor diam ipsum takima erat tempor",
       "icon": "faCoffee"
     },
     {
-      "id": 3,
+      "id": "3",
       "title": "Best Quality Coffee",
       "img": "/images/service-3.jpg",
       "desc": "Sit lorem ipsum et diam elitr est dolor sed duo. Guberg sea et et lorem dolor sed est sit invidunt, dolore tempor diam ipsum takima erat tempor",
       "icon": "faAward"
     },
     {
-      "id": 4,
+      "id": "4",
       "title": "Online Table Booking",
       "img": "/images/service-4.jpg",
       "desc": "Sit lorem ipsum et diam elitr est dolor sed duo. Guberg sea et et lorem dolor sed est sit invidunt, dolore tempor diam ipsum takima erat tempor",
@@ -99,11 +99,11 @@
   ],
   "newsLetters": [
     {
-      "id": 1,
+      "id": "1",
       "email": "jasmin@gmail.com"
     },
     {
-      "id": 2,
+      "id": "2",
       "email": "yasi@gmail.com"
     },
     {
@@ -117,7 +117,7 @@
   ],
   "comment": [
     {
-      "id": 1,
+      "id": "1",
       "username": "Eriq Jason",
       "desc": "Perfect Coffee",
       "productID": "1",
@@ -125,7 +125,7 @@
       "img": "/images/testimonial-2.jpg"
     },
     {
-      "id": 2,
+      "id": "2",
       "username": "Emily Johnson",
       "desc": "Delicious pastries!",
       "productID": "2",
@@ -133,7 +133,7 @@
       "img": "/images/testimonial-2.jpg"
     },
     {
-      "id": 3,
+      "id": "3",
       "username": "Michael Thompson",
       "desc": "Cozy atmosphere, great service.",
       "productID": "3",
@@ -141,7 +141,7 @@
       "img": "/images/testimonial-3.jpg"
     },
     {
-      "id": 4,
+      "id": "4",
       "username": "Sophia Wilson",
       "desc": "The best latte in town!",
       "productID": "4",
@@ -149,7 +149,7 @@
       "img": "/images/testimonial-4.jpg"
     },
     {
-      "id": 5,
+      "id": "5",
       "username": "David Anderson",
       "desc": "Friendly staff, tasty food.",
       "productID": "5",
@@ -157,7 +157,7 @@
       "img": "/images/testimonial-5.jpg"
     },
     {
-      "id": 6,
+      "id": "6",
       "username": "Olivia Thomas",
       "desc": "Excellent coffee and pastries!",
       "productID": "6",
@@ -165,7 +165,7 @@
       "img": "/images/testimonial-6.jpg"
     },
     {
-      "id": 7,
+      "id": "7",
       "username": "William Martinez",
       "desc": "Cozy spot for a relaxing break.",
       "productID": "1",
@@ -173,7 +173,7 @@
       "img": "/images/testimonial-1.jpg"
     },
     {
-      "id": 8,
+      "id": "8",
       "username": "Emma Hernandez",
       "desc": "Delightful atmosphere, great coffee.",
       "productID": "2",
@@ -181,7 +181,7 @@
       "img": "/images/testimonial-2.jpg"
     },
     {
-      "id": 9,
+      "id": "9",
       "username": "Jacob Garcia",
       "desc": "Fantastic service, tasty treats.",
       "productID": "3",
@@ -189,7 +189,7 @@
       "img": "/images/testimonial-3.jpg"
     },
     {
-      "id": 10,
+      "id": "10",
       "username": "Isabella Rodriguez",
       "desc": "Cozy cafe, perfect for studying.",
       "productID": "4",
@@ -197,7 +197,7 @@
       "img": "/images/testimonial-4.jpg"
     },
     {
-      "id": 11,
+      "id": "11",
       "username": "Michael Gonzalez",
       "desc": "Excellent coffee and friendly staff.",
       "productID": "5",
@@ -205,7 +205,7 @@
       "img": "/images/testimonial-5.jpg"
     },
     {
-      "id": 12,
+      "id": "12",
       "username": "Sophia Perez",
       "desc": "Delicious pastries, cozy ambiance.",
       "productID": "5",
@@ -213,7 +213,7 @@
       "img": "/images/testimonial-1.jpg"
     },
     {
-      "id": 13,
+      "id": "13",
       "username": "Daniel Sanchez",
       "desc": "Great spot for a quick coffee break.",
       "productID": "5",
@@ -221,7 +221,7 @@
       "img": "/images/testimonial-2.jpg"
     },
     {
-      "id": 14,
+      "id": "14",
       "username": "Ava Ramirez",
       "desc": "Fantastic coffee, friendly baristas.",
       "productID": "5",
@@ -229,7 +229,7 @@
       "img": "/images/testimonial-3.jpg"
     },
     {
-      "id": 15,
+      "id": "15",
       "username": "Joseph Torres",
       "desc": "Cozy cafe with a great atmosphere.",
       "productID": "6",
@@ -237,7 +237,7 @@
       "img": "/images/testimonial-6.jpg"
     },
     {
-      "id": 16,
+      "id": "16",
       "username": "Mia Flores",
       "desc": "Delicious coffee and tasty treats.",
       "productID": "6",
@@ -245,7 +245,7 @@
       "img": "/images/testimonial-2.jpg"
     },
     {
-      "id": 17,
+      "id": "17",
       "username": "Benjamin Rivera",
       "desc": "Friendly staff, great service.",
       "productID": "6",
@@ -253,7 +253,7 @@
       "img": "/images/testimonial-5.jpg"
     },
     {
-      "id": 18,
+      "id": "18",
       "username": "Sophia Gomez",
       "desc": "Cozy spot for a relaxing coffee break.",
       "productID": "2",
@@ -261,7 +261,7 @@
       "img": "/images/testimonial-4.jpg"
     },
     {
-      "id": 19,
+      "id": "19",
       "username": "Daniel Diaz",
       "desc": "Excellent coffee and pastries!",
       "productID": "3",
@@ -269,7 +269,7 @@
       "img": "/images/testimonial-6.jpg"
     },
     {
-      "id": 20,
+      "id": "20",
       "username": "Ava Reyes",
       "desc": "Delightful atmosphere, great service.",
       "productID": "3",
@@ -284,6 +284,13 @@
       "email": "y.ranjbar6698@gmail.com",
       "subject": "rthrftgh",
       "message": "sssss"
+    },
+    {
+      "id": "5b5b",
+      "name": "",
+      "email": "",
+      "subject": "",
+      "message": ""
     }
   ],
   "reservation": []

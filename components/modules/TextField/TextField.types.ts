@@ -1,6 +1,6 @@
-import { ChangeEvent } from "react";
+import { ChangeEvent, InputHTMLAttributes } from "react";
 
-export type TextFieldProps = Partial<HTMLInputElement> & {
+export type TextFieldProps = InputHTMLAttributes<HTMLInputElement> & {
   onChange?: (e: ChangeEvent<HTMLInputElement>) => void;
   variant: "yellow" | "gray";
   bgVariant: "brown" | "primary-light";

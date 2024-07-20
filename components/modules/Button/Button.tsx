@@ -14,7 +14,7 @@ const IButton: React.FC<ComponentButtonProps> = ({
         variant === "primary" ? "bg-brown text-white" : "bg-yellow text-primary"
       } ${
         size === "large" ? "w-40 h-10" : "w-full"
-      } rounded-lg py-3 px-4 text-sm data-[hover]:bg-sky-500 data-[active]:bg-sky-700`}
+      } rounded-md py-3 px-4 text-sm font-semibold data-[hover]:bg-sky-500 data-[active]:bg-sky-700`}
     >
       {children}
     </Button>
