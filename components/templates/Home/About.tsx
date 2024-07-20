@@ -5,6 +5,7 @@ import { config } from "@fortawesome/fontawesome-svg-core";
 config.autoAddCss = false;
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import * as Icons from "@fortawesome/free-solid-svg-icons";
+import IButton from "@/components/modules/Button/Button";
 
 
 function About() {
@@ -29,9 +30,12 @@ function About() {
               no. Est nonumy sed labore eirmod sit magna. Erat at est justo sit
               ut. Labor diam sed ipsum et eirmod
             </p>
-            <button className="bg-brown text-white py-2 font-bold inline-block px-6">
+            <IButton size="large" variant="primary">
               Learn More
-            </button>
+            </IButton>
+            {/* <button className="bg-brown text-white py-2 font-bold inline-block px-6">
+              
+            </button> */}
           </div>
 
           <div className="flex flex-1 justify-center">
@@ -83,9 +87,12 @@ function About() {
                 </span>
               </h5>
             </div>
-            <button className="bg-yellow text-primary py-2 font-bold inline-block px-6">
+            <IButton size="large" variant="secondary">
               Learn More
-            </button>
+            </IButton>
+            {/* <button className="bg-yellow text-primary py-2 font-bold inline-block px-6">
+              Learn More
+            </button> */}
           </div>
         </div>
       </section>

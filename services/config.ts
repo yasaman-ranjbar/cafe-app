@@ -31,6 +31,8 @@ httpRequest.interceptors.response.use(
       toast.error("User is already exist");
     } else if (error.response?.status === 404) {
       toast.error("User not found");
+    } else if (error.response?.status === 409) {
+      toast.error("Email already registered");
     }
     return error.response;
   }
