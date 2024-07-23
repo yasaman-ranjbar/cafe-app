@@ -1,22 +1,30 @@
 const mongoose = require("mongoose");
 
 const schema = mongoose.Schema({
-  name: {
+  image: {
     type: String,
     required: true,
   },
-  email: {
+  price: {
     type: String,
     required: true,
   },
-  subject: {
+  title: {
     type: String,
     required: true,
   },
-  message: {
+  desc: {
     type: String,
     required: true,
   },
+  comments: {
+      type: String,
+      required: true,
+  },
+  off: {
+    type: Number,
+    required: false,
+  }
   
 });
 
