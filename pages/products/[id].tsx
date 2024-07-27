@@ -4,6 +4,7 @@ import ProductComments from "@/components/templates/Comments/ProductComments";
 import Testimonial from "@/components/templates/Home/Testimonial";
 import ProductDetails from "@/components/templates/Products/ProductDetails";
 import PageLayout from "@/layout/PageLayout";
+import { getProduct } from "@/services/requests/product";
 import Head from "next/head";
 
 interface CommentDataProps {
@@ -28,10 +29,9 @@ function Index({ product, comment, head }: CommentDataProps) {
 }
 
 export async function getStaticPaths() {
-  const res = await fetch(`http://localhost:4000/menu`);
-  const products = await res.json();
+  const res = await getProduct();
 
-  const paths = products.map((product: MenuProps) => ({
+  const paths = res.data.map((product: MenuProps) => ({
     params: { id: String(product.id) },
   }));
 

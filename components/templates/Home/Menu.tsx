@@ -6,6 +6,8 @@ import { useSearchParams } from "next/navigation";
 function Menu({ menu }: { menu: MenuProps[] }) {
   const searchParam = useSearchParams();
 
+  console.log(menu);
+
   return (
     <div className="container py-12">
       <SectionHeader header="Competitive Pricing" title="MENU & PRICING" />
@@ -23,21 +25,18 @@ function Menu({ menu }: { menu: MenuProps[] }) {
       </h2>
       <div className="flex">
         <div className="flex flex-col gap-12">
-          {menu
-            .filter((item) => item.type === "hot")
-            .slice(0, 3)
-            .map((item) => (
-              <MenuSection key={item.id} {...item} />
-            ))}
+          {menu.map((item) => (
+            <MenuSection key={item.id} {...item} />
+          ))}
         </div>
-        <div className="flex flex-col gap-12">
+        {/* <div className="flex flex-col gap-12">
           {menu
             .filter((item) => item.type === "cold")
             .slice(0, 3)
             .map((item) => (
               <MenuSection key={item.id} {...item} />
             ))}
-        </div>
+        </div> */}
       </div>
     </div>
   );
