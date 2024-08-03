@@ -1,14 +1,26 @@
 import Image from "next/image";
-import { MenuProps } from "./menuSection.types";
 import Link from "next/link";
 import { useCard } from "@/store/card-store";
+import { ProductDetailsProps } from "@/services/requests/product";
 
-const MenuSection: React.FC<MenuProps> = ({ title, price, img, desc, id, type, off, qt }) => {
+const MenuSection: React.FC<ProductDetailsProps> = ({
+  title,
+  price,
+  image,
+  description,
+  _id,
+  discount,
+}) => {
   const addCard = useCard((state) => state.addCard);
   const cards = useCard((state) => state.cards);
 
-  const addToCart = (id: number) => {
-    addCard({ id, title, price, type,  img, desc , off, qt });
+  const addToCart = (ID: number) => {
+    addCard({
+      _id, title, price, image, description, discount,
+      tags: [],
+      comment: [],
+      score: 0
+    });
   };
 
   console.log("cards", cards);
@@ -18,7 +30,7 @@ const MenuSection: React.FC<MenuProps> = ({ title, price, img, desc, id, type, o
       <div className="relative">
         <Image
           className="rounded-full"
-          src={img}
+          src={image}
           alt={title}
           width={200}
           height={100}
@@ -28,14 +40,14 @@ const MenuSection: React.FC<MenuProps> = ({ title, price, img, desc, id, type, o
         </div>
       </div>
       <div className="px-3.5">
-        <Link href={`/products/${id}`}>
+        <Link href={`/products/${_id}`}>
           <h3 className="text-primary text-2xl font-semibold cursor-pointer">
             {title}
           </h3>
         </Link>
-        <h5 className="text-gray font-normal">{desc}</h5>
+        <h5 className="text-gray font-normal">{description}</h5>
         <button
-          onClick={() => addToCart(id as number)}
+          onClick={() => addToCart(+_id)}
           className="text-yellow font-bold mt-4 border border-yellow rounded-lg px-2 py-1"
         >
           add to cart

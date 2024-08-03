@@ -1,11 +1,13 @@
 import httpRequest from "../config";
 
-interface AddCommentProps {
+export interface AddCommentProps {
+  _id: string;
   username: string;
   email: string;
   description: string;
   score: number;
   productID: string;
+  date: Date;
 }
 
 

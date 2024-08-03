@@ -1,9 +1,10 @@
 import MenuSection from "@/components/modules/MenuSection/MenuSection";
 import { MenuProps } from "@/components/modules/MenuSection/menuSection.types";
 import SectionHeader from "@/components/modules/SectionHeader/SectionHeader";
+import { ProductDetailsProps } from "@/services/requests/product";
 import { useSearchParams } from "next/navigation";
 
-function Menu({ menu }: { menu: MenuProps[] }) {
+function Menu({ menu }: { menu: ProductDetailsProps[] }) {
   const searchParam = useSearchParams();
 
   console.log(menu);
@@ -11,7 +12,7 @@ function Menu({ menu }: { menu: MenuProps[] }) {
   return (
     <div className="container py-12">
       <SectionHeader header="Competitive Pricing" title="MENU & PRICING" />
-      <h2 className="text-primary text-4xl font-bold mb-12">
+      {/* <h2 className="text-primary text-4xl font-bold mb-12">
         {searchParam.get("q") === "hot" ? (
           "Hot Coffee"
         ) : searchParam.get("q") === "cold" ? (
@@ -22,11 +23,11 @@ function Menu({ menu }: { menu: MenuProps[] }) {
             <div>Cold Coffee</div>
           </div>
         )}
-      </h2>
+      </h2> */}
       <div className="flex">
         <div className="flex flex-col gap-12">
           {menu.map((item) => (
-            <MenuSection key={item.id} {...item} />
+            <MenuSection key={item._id} {...item} />
           ))}
         </div>
         {/* <div className="flex flex-col gap-12">

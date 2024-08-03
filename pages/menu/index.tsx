@@ -20,7 +20,6 @@ function Index({ menu }: MenuDataProps) {
 export const getStaticProps = async () => {
 
   const menuData = await getProduct();
-  console.log("menuData", menuData.data);
 
   return {
     props: {
