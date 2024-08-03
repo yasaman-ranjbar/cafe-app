@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useCard } from "@/store/card-store";
 import { ProductDetailsProps } from "@/services/requests/product";
+import defaultImage from "@/public/images/menu-1.jpg";
 
 const MenuSection: React.FC<ProductDetailsProps> = ({
   title,
@@ -30,7 +31,7 @@ const MenuSection: React.FC<ProductDetailsProps> = ({
       <div className="relative">
         <Image
           className="rounded-full"
-          src={image}
+          src={image === "" ? defaultImage : `/images/${image}`}
           alt={title}
           width={200}
           height={100}

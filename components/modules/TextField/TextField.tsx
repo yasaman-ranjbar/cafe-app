@@ -4,7 +4,8 @@ import { TextFieldProps, TextareaProps } from "./TextField.types";
 
 export const Textarea = forwardRef(
   (props: TextareaProps, ref: Ref<HTMLTextAreaElement>) => {
-    const { placeholder, onChange, variant, bgVariant ,label,error, ...rest } = props;
+    const { placeholder, onChange, variant, bgVariant, label, error, ...rest } =
+      props;
     return (
       <div>
         {label && <label className="text-primary font-bold">{label}</label>}
@@ -28,8 +29,18 @@ export const Textarea = forwardRef(
 
 const TextField = forwardRef(
   (props: TextFieldProps, ref: Ref<HTMLInputElement>) => {
-    const { type, name, placeholder, onChange, variant, bgVariant,error,label, ...rest } =
-      props;
+    const {
+      type,
+      name,
+      placeholder,
+      onChange,
+      variant,
+      bgVariant,
+      error,
+      label,
+      className,
+      ...rest
+    } = props;
     return (
       <div>
         {label && (
@@ -39,7 +50,7 @@ const TextField = forwardRef(
         )}
         <input
           ref={ref}
-          className={`${
+          className={`${className} ${
             error
               ? "focus:ring-2 ring-offset-1 ring-offset-red ring-red/30 focus:border-red/35 border border-red"
               : "focus:ring-2 ring-offset-1 ring-offset-yellow ring-yellow/30 focus:border-yellow/35"

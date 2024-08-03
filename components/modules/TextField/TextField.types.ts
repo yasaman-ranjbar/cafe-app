@@ -6,6 +6,7 @@ export type TextFieldProps = InputHTMLAttributes<HTMLInputElement> & {
   bgVariant: "brown" | "primary-light";
   error?: string;
   label?: string;
+  className?: string;
 };
 
 export type TextareaProps = Partial<HTMLTextAreaElement> & {

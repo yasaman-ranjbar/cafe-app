@@ -5,12 +5,13 @@ const IButton: React.FC<ComponentButtonProps> = ({
   children,
   variant,
   size,
+  className,
   ...rest
 }) => {
   return (
     <Button
       {...rest}
-      className={`${
+      className={`${className} ${
         variant === "primary" ? "bg-brown text-white" : "bg-yellow text-primary"
       } ${
         size === "large" ? "w-40 h-10" : "w-full"
@@ -20,5 +21,5 @@ const IButton: React.FC<ComponentButtonProps> = ({
     </Button>
   );
 };
-
+``
 export default IButton;

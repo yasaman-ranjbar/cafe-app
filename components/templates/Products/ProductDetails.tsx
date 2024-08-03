@@ -38,7 +38,7 @@ const ProductDetails = ({
       <div className="z-10 flex gap-24 container">
         <Image
           className="rounded-2xl"
-          src={product.image! || placeholder}
+          src={product.image === "" ? placeholder : `/images/${product.image}`}
           alt={product.title!}
           width={350}
           height={350}
