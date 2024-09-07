@@ -14,6 +14,8 @@ import { useCard } from "@/store/card-store";
 import Drawer from "../Drawer/Drawer";
 import CartDrawer from "@/components/templates/Cart/CartDrawer";
 import { usePathname } from "next/navigation";
+import MobileNavbar from "./MobileNavbar";
+import DesktopNavbar from "./DesktopNavbar";
 
 interface UserProps {
   firstname: string;
@@ -33,10 +35,11 @@ function Navbar() {
   const [showViewPort, setShowViewPort] = useState(false);
   const [user, setUser] = useState<UserProps>();
   const [isOpen, setIsOpen] = useState(false);
+  const [userAgent, setUserAgent] = useState<string>("");
 
   const cards = useCard((state) => state.cards);
 
-  const pathName = usePathname()
+  const pathName = usePathname();
 
   useEffect(() => {
     window.addEventListener("scroll", () => {
@@ -116,17 +119,7 @@ function Navbar() {
     };
   }, [ref]);
 
-  const searchHandlerWithEnter = (e: React.KeyboardEvent<HTMLInputElement>) => {
-    if (e.key === "Enter") {
-      searchHandler();
-    }
-  };
 
-  const searchHandler = () => {
-    if (search.trim()) {
-      router.push(`/search?q=${search}`);
-    }
-  };
 
   const logoutHandler = async () => {
     const res = await logout();
@@ -140,111 +133,37 @@ function Navbar() {
     setIsOpen(!isOpen);
   };
 
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      setUserAgent(window.navigator.userAgent);
+    }
+  }, []);
+
   return (
-    <div className="sticky top-0 z-[999] bg-darkGray">
+    <div className="sticky top-0 z-[999] bg-darkGray w-full">
       <div
         className={`${
           showViewPort ? "bg-brown/90" : ""
-        } transition ease-in-out py-6 px-12 flex justify-between items-center w-full absolute`}
+        } transition ease-in-out py-6 px-4 md:px-12 flex justify-between items-center w-full absolute`}
       >
-        <div className="flex items-center gap-6 relative">
-          <span className="cursor-pointer  ">
-            {isLoggedIn ? (
-              <DropDown
-                items={dropdownItem}
-                hasHeader
-                headerTitle={user?.firstname + " " + user?.lastname}
-                hasFooter
-                footerTitle="Logout"
-                title={
-                  <FontAwesomeIcon
-                    icon={Icons["faUserCircle"]}
-                    className="text-white text-xl font-bold"
-                  />
-                }
-                footerHandler={logoutHandler}
-              />
-            ) : (
-              <Link href="/login" className="text-white">
-                Login
-              </Link>
-            )}
-          </span>
-          <span className="cursor-pointer relative ">
-            <div className="absolute -top-3 -left-1 bg-yellow size-5 font-bold flex justify-center items-center rounded-full text-primary">
-              {cards.length}
-            </div>
-            <FontAwesomeIcon
-              onClick={toggleDrawer}
-              icon={Icons["faShoppingCart"]}
-              className="text-white text-xl font-bold"
-            />
-            <Drawer isOpen={isOpen} toggleDrawer={toggleDrawer}>
-              <CartDrawer />
-            </Drawer>
-          </span>
-
-          <span className="font-bold sm:text-[5px] md:text-[2rem] text-white">
-            COFFEE APPLICATION
-          </span>
-
-          <div className="flex gap-2 items-center relative border-b border-white">
-            <input
-              value={search}
-              onChange={(event) => setSearch(event.target.value)}
-              onKeyDown={searchHandlerWithEnter}
-              type="text"
-              className=" outline-none bg-transparent  h-10 text-yellow"
-              placeholder="Search..."
-            />
-            <FontAwesomeIcon
-              icon={Icons["faSearch"]}
-              className="text-white text-lg font-bold"
-              onClick={searchHandler}
-            />
-          </div>
-        </div>
-        <span className="md:hidden xs:block">
-          <FontAwesomeIcon
-            icon={Icons["faBars"]}
-            className=" text-white text-xl font-bold"
+        {userAgent.includes("Mobile") ? (
+          <MobileNavbar />
+        ) : (
+          <DesktopNavbar
+            user={user}
+            menu={menu}
+            logoutHandler={logoutHandler}
+            isLoggedIn={isLoggedIn}
+            dropdownItem={dropdownItem}
+            cards={cards}
+            toggleDrawer={toggleDrawer}
+            isOpen={isOpen}
+            link={link}
+            pathName={pathName}
+            toggleSubmenu={toggleSubmenu}
+            showSubmenu={showSubmenu}
           />
-        </span>
-
-        <div className="block md:flex xs:hidden">
-          {menu.map((item) => (
-            <ul key={item.key}>
-              <Link
-                ref={link}
-                id="submenu"
-                className={`${item.submenu ? "submenu" : ""} ${
-                  item.link === pathName
-                    ? "text-yellow"
-                    : "text-white hover:text-yellow"
-                } px-3.5 py-2 relative font-bold text-lg  `}
-                href={item.isSubmenu ? "" : item.link}
-                onClick={
-                  item.isSubmenu ? () => toggleSubmenu(item.key) : undefined
-                }
-              >
-                {item.title}
-              </Link>
-              {showSubmenu && item.submenu && (
-                <div ref={ref} className="absolute top-[4.5rem] bg-white py-2">
-                  {item.submenu.map((subItem) => (
-                    <Link
-                      className="flex flex-col hover:bg-orange-300 px-3 py-1 font-normal tracking-wider"
-                      href={subItem.link}
-                      key={subItem.title}
-                    >
-                      {subItem.title}
-                    </Link>
-                  ))}
-                </div>
-              )}
-            </ul>
-          ))}
-        </div>
+        )}
       </div>
     </div>
   );

@@ -16,7 +16,7 @@ const ServiceSectionCard: React.FC<ServiceSectionCardProps> = ({
   title,
 }) => {
   return (
-    <div className="flex">
+    <div className="md:flex">
       <Image
         className="px-3.5"
         src={img}

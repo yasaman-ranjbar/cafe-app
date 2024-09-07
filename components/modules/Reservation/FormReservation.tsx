@@ -28,7 +28,7 @@ function FormReservation() {
 
   return (
     <div className="z-20 flex-1 bg-brown/75 p-12">
-      <h1 className="mb-4 text-white text-5xl font-bold pb-6 pt-12">
+      <h1 className="mb-4 text-white text-3xl md:text-5xl font-bold pb-6 pt-12">
         Book Your Table
       </h1>
       <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-4">

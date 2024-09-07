@@ -7,8 +7,10 @@ import * as Icons from "@fortawesome/free-solid-svg-icons";
 function TextReservation() {
   return (
     <div className="z-10 flex-1 p-12 flex flex-col justify-center ">
-      <h1 className="text-yellow text-7xl font-bold mt-4 mb-2">30% OFF</h1>
-      <h2 className="mb-4 text-white text-4xl font-bold">
+      <h1 className="text-yellow text-5xl md:text-7xl font-bold mt-4 mb-2">
+        30% OFF
+      </h1>
+      <h2 className="mb-4 text-white text-3xl md:text-4xl font-bold">
         For Online Reservation
       </h2>
       <h3 className="mb-6 pb-4 text-white font-light text-lg">

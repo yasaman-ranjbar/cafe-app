@@ -27,7 +27,7 @@ const MenuSection: React.FC<ProductDetailsProps> = ({
   console.log("cards", cards);
 
   return (
-    <div className="flex items-center">
+    <div className="flex md:flex-row flex-col md:items-center">
       <div className="relative">
         <Image
           className="rounded-full"

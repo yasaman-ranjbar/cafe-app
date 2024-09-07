@@ -17,7 +17,6 @@ function Offer() {
       setEmail("")
       toast.success(res.data.message);
     }
-    console.log(res);
   };
 
   return (
@@ -26,11 +25,13 @@ function Offer() {
       <div className="flex flex-col items-center justify-center bg-background-bg bg-cover py-12 text-center relative">
         <div className="absolute left-0 top-0 size-full bg-brown/90" />
         <div className="z-10">
-          <h1 className="text-yellow text-7xl font-bold mt-4 mb-2">50% OFF</h1>
-          <h2 className="mb-4 text-white text-5xl font-bold">
+          <h1 className="text-yellow text-5xl md:text-7xl font-bold mt-4 mb-2">
+            50% OFF
+          </h1>
+          <h2 className="mb-4 text-white text-3xl md:text-5xl font-bold">
             Sunday Special Offer
           </h2>
-          <h3 className="mb-6 pb-4 text-white font-semibold text-3xl">
+          <h3 className="mb-6 pb-4 text-white font-semibold text-xl md:text-3xl">
             Only for Sunday from 1st Jan to 30th Jan 2045
           </h3>
           <div className="pb-6">

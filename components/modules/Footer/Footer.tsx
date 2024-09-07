@@ -33,12 +33,12 @@ function Footer() {
   };
 
   return (
-    <div className="relative">
+    <div className="relative w-full">
       <div className="absolute top-0 right-0 w-full h-10 bg-background-top-paper bg-repeat-x z-50" />
       <div className="bg-background-bg bg-cover relative z-10 ">
         <div className="absolute left-0 top-0 size-full bg-brown/90" />
 
-        <div className="text-white grid grid-cols-4  pt-24">
+        <div className="text-white grid grid-cols-1 md:grid-cols-4  pt-24">
           <div className="z-10 px-12 ">
             <div>
               <h1 className="text-2xl font-bold mb-6">GET IN TOUCH</h1>

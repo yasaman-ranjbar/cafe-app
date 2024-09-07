@@ -1,4 +1,5 @@
 import { MenuProps } from "@/components/modules/MenuSection/menuSection.types";
+import Navbar from "@/components/modules/Navbar/Navbar";
 import { ServiceSectionCardProps } from "@/components/modules/ServicesSectionCard/serviceSection.types";
 import { TestimonialProps } from "@/components/modules/Testimonial/testimonial.types";
 import About from "@/components/templates/Home/About";
@@ -24,10 +25,6 @@ function Index({ data }: DataProps) {
     <>
       <Head>
         <title>coffee application</title>
-        <meta
-          name="description"
-          content="coffee application to book a table and reserve your coffee"
-        />
       </Head>
       <PageLayout>
         <Slider />

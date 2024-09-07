@@ -15,9 +15,9 @@ function About() {
       <section className="container py-12">
         <SectionHeader title="About Us" header="Serving Since 1950" />
 
-        <div className="flex justify-between">
+        <div className="flex flex-col gap-y-8 md:flex-row md:justify-between">
           <div className="flex-1">
-            <h2 className="mb-4 font-semibold text-primary text-4xl">
+            <h2 className="mb-4 font-semibold text-primary text-2xl md:text-4xl">
               Our Story
             </h2>
             <h4 className="text-primary text-xl font-normal mb-4">
