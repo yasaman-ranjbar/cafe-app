@@ -24,8 +24,8 @@ function Menu({ menu }: { menu: ProductDetailsProps[] }) {
           </div>
         )}
       </h2> */}
-      <div className="flex">
-        <div className="flex flex-col gap-12">
+      <div>
+        <div className="grid grid-cols-2 gap-12">
           {menu.map((item) => (
             <MenuSection key={item._id} {...item} />
           ))}

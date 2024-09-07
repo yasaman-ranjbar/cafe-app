@@ -29,7 +29,10 @@ const DropDown: React.FC<DropdownProps> = ({
 
         {items.map((item) => (
           <MenuItem key={item.title}>
-            <Link className="flex flex-col px-4" href={item.link}>
+            <Link
+              className="flex flex-col px-4"
+              href={item.link}
+            >
               <p className="py-2">{item.title}</p>
             </Link>
           </MenuItem>

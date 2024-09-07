@@ -13,6 +13,7 @@ import { getMe, logout } from "@/services/requests/auth";
 import { useCard } from "@/store/card-store";
 import Drawer from "../Drawer/Drawer";
 import CartDrawer from "@/components/templates/Cart/CartDrawer";
+import { usePathname } from "next/navigation";
 
 interface UserProps {
   firstname: string;
@@ -34,6 +35,8 @@ function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
 
   const cards = useCard((state) => state.cards);
+
+  const pathName = usePathname()
 
   useEffect(() => {
     window.addEventListener("scroll", () => {
@@ -176,9 +179,9 @@ function Navbar() {
               icon={Icons["faShoppingCart"]}
               className="text-white text-xl font-bold"
             />
-              <Drawer isOpen={isOpen} toggleDrawer={toggleDrawer}>
-                <CartDrawer />
-              </Drawer>
+            <Drawer isOpen={isOpen} toggleDrawer={toggleDrawer}>
+              <CartDrawer />
+            </Drawer>
           </span>
 
           <span className="font-bold sm:text-[5px] md:text-[2rem] text-white">
@@ -214,9 +217,11 @@ function Navbar() {
               <Link
                 ref={link}
                 id="submenu"
-                className={`${
-                  item.submenu ? "submenu" : ""
-                } px-3.5 py-2 relative font-bold text-lg text-white hover:text-yellow`}
+                className={`${item.submenu ? "submenu" : ""} ${
+                  item.link === pathName
+                    ? "text-yellow"
+                    : "text-white hover:text-yellow"
+                } px-3.5 py-2 relative font-bold text-lg  `}
                 href={item.isSubmenu ? "" : item.link}
                 onClick={
                   item.isSubmenu ? () => toggleSubmenu(item.key) : undefined

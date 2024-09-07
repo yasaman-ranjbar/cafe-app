@@ -29,6 +29,8 @@ function Index({ product, head }: CommentDataProps) {
 export async function getStaticPaths() {
   const res = await getProduct();
 
+  
+
   const paths = res.data.map((product: MenuProps) => ({
     params: { id: String(product._id) },
   }));
@@ -39,9 +41,8 @@ export async function getStaticPaths() {
   };
 }
 
-export async function getStaticProps(context: { params: { id: string } }) {
+export async function getStaticProps(context: { params: { id: string  }}) {
   const { params } = context;
-
 
   try {
     const { data } : any = await getProductByID(params.id);
@@ -57,8 +58,6 @@ export async function getStaticProps(context: { params: { id: string } }) {
       comment: data?.comment ?? [],
       score: data?.score ?? 0,
     };
-
-    console.log("productResponse", data);
 
     return {
       props: {

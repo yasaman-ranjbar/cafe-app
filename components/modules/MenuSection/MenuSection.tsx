@@ -41,7 +41,7 @@ const MenuSection: React.FC<ProductDetailsProps> = ({
         </div>
       </div>
       <div className="px-3.5">
-        <Link href={`/products/${_id}`}>
+        <Link href={{ pathname: `/products/${_id}`, query: { name: title } }}>
           <h3 className="text-primary text-2xl font-semibold cursor-pointer">
             {title}
           </h3>
