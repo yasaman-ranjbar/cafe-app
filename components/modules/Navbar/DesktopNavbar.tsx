@@ -1,3 +1,5 @@
+"use client";
+
 import Link from "next/link";
 import DropDown from "../Dropdown/DropDown";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
@@ -8,7 +10,8 @@ import MenuIcon from "@mui/icons-material/Menu";
 import { DesktopNavbarProps } from "./navbar.types";
 import Search from "../Search/Search";
 import { ChangeEvent, useState } from "react";
-import { useRouter } from "next/router";
+import { useRouter } from "next/navigation";
+import { Button, Menu, MenuItem } from "@mui/material";
 
 const DesktopNavbar = ({
   isLoggedIn,
@@ -25,6 +28,16 @@ const DesktopNavbar = ({
   showSubmenu,
 }: DesktopNavbarProps) => {
   const [search, setSearch] = useState("");
+  const [showClearIcon, setShowClearIcon] = useState("none");
+  const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
+  const open = Boolean(anchorEl);
+
+  const openSubmenu = (event: React.MouseEvent<HTMLButtonElement>) => {
+    setAnchorEl(event.currentTarget);
+  };
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
 
   const router = useRouter();
 
@@ -42,10 +55,18 @@ const DesktopNavbar = ({
 
   const searchEvent = (e: ChangeEvent<HTMLInputElement>) => {
     setSearch(e.target.value);
+    setShowClearIcon(e.target.value === "" ? "none" : "flex");
   };
 
+  const clearSearch = () => {
+    setSearch("");
+    setShowClearIcon("none");
+    console.log("first")
+  };
+
+
   return (
-    <>
+    <div className="flex items-center w-full gap-12">
       <div className="flex items-center gap-6 relative">
         <span className="font-bold text-[5px] md:text-[2rem] text-white">
           COFFEE Reservation
@@ -76,52 +97,72 @@ const DesktopNavbar = ({
             <CartDrawer />
           </Drawer>
         </span>
-        <Search
-          search={search}
-          searchHandlerWithEnter={searchHandlerWithEnter}
-          searchHandler={searchEvent}
-        />
       </div>
 
-      <span className="block md:hidden">
-        <MenuIcon className=" text-white text-xl font-bold" />
-      </span>
+      <Search
+        search={search}
+        searchHandlerWithEnter={searchHandlerWithEnter}
+        searchHandler={searchEvent}
+        clearSearch={clearSearch}
+        showClearIcon={showClearIcon}
+      />
 
-      <div className="hidden md:flex">
-        {menu.map((item: any) => (
-          <ul key={item.key}>
-            <Link
-              ref={link}
-              id="submenu"
-              className={`${item.submenu ? "submenu" : ""} ${
-                item.link === pathName
-                  ? "text-yellow"
-                  : "text-white hover:text-yellow"
-              } px-3.5 py-2 relative font-bold text-lg  `}
-              href={item.isSubmenu ? "" : item.link}
-              onClick={
-                item.isSubmenu ? () => toggleSubmenu(item.key) : undefined
-              }
+      <div className="flex gap-6 items-center">
+        {menu.map((item) => (
+          <>
+            {item.submenu ? (
+              <Button
+                id="basic-button"
+                aria-controls={open ? "basic-menu" : undefined}
+                aria-haspopup="true"
+                aria-expanded={open ? "true" : undefined}
+                onClick={openSubmenu}
+                key={item.key}
+                className="text-white text-base font-bold capitalize"
+              >
+                {item.title}
+              </Button>
+            ) : (
+              <Link
+                key={item.key}
+                href={item.link}
+                className={`text-white font-bold text-lg ${
+                  item.link === pathName
+                    ? "text-yellow"
+                    : "text-white hover:text-yellow"
+                }`}
+              >
+                {item.title}
+              </Link>
+            )}
+
+            <Menu
+              id="basic-menu"
+              anchorEl={anchorEl}
+              open={open}
+              onClose={handleClose}
+              MenuListProps={{
+                "aria-labelledby": "basic-button",
+              }}
             >
-              {item.title}
-            </Link>
-            {/* {showSubmenu && item.submenu && (
-                <div ref={ref} className="absolute top-[4.5rem] bg-white py-2">
-                  {item.submenu.map((subItem) => (
-                    <Link
-                      className="flex flex-col hover:bg-orange-300 px-3 py-1 font-normal tracking-wider"
-                      href={subItem.link}
+              {menu.map(
+                (item) =>
+                  item.submenu &&
+                  item.submenu.map((subItem) => (
+                    <MenuItem
+                      onClick={handleClose}
                       key={subItem.title}
+                      className="text-primary text-base"
                     >
-                      {subItem.title}
-                    </Link>
-                  ))}
-                </div>
-              )} */}
-          </ul>
+                      <Link href={subItem.link}>{subItem.title}</Link>
+                    </MenuItem>
+                  ))
+              )}
+            </Menu>
+          </>
         ))}
       </div>
-    </>
+    </div>
   );
 };
 

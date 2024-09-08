@@ -8,10 +8,12 @@ const TestimonialCard: React.FC<AddCommentProps> = ({
 }) => {
   return (
     <div className="flex flex-col justify-center items-center pb-12">
-      <div className="flex justify-center items-center gap-4">
+      <div className="flex md:flex-row flex-col justify-center items-center gap-4">
         <Image src={placeholder} width={50} height={50} alt={username} />
-        <div className="flex flex-col gap-4">
-          <h2 className="text-primary text-2xl font-semibold">{username}</h2>
+        <div className="flex flex-col justify-center items-center gap-4">
+          <h2 className="text-primary text-lg md:text-2xl font-semibold truncate">
+            {username}
+          </h2>
           <h2 className="text-gray italic font-extralight text-base">User</h2>
         </div>
       </div>
