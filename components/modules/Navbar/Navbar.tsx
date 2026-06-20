@@ -36,23 +36,23 @@ function Navbar() {
   const [user, setUser] = useState<UserProps>();
   const [isOpen, setIsOpen] = useState(false);
   const [userAgent, setUserAgent] = useState<string>("");
+  const [isScrolled, setIsScrolled] = useState(false);
 
   const cards = useCard((state) => state.cards);
 
   const pathName = usePathname();
 
   useEffect(() => {
-    window.addEventListener("scroll", () => {
-      if (window.scrollY > 200) {
-        setShowViewPort(true);
+    const handleScroll = () => {
+      if (window.scrollY > 50) {
+        setIsScrolled(true);
       } else {
-        setShowViewPort(false);
+        setIsScrolled(false);
       }
-    });
-
-    return () => {
-      window.removeEventListener("scroll", () => {});
     };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   useEffect(() => {
@@ -140,32 +140,65 @@ function Navbar() {
   }, []);
 
   return (
-    <div className="sticky top-0 z-[999] bg-darkGray w-full">
-      <div
-        className={`${
-          showViewPort ? "bg-brown/90" : ""
-        } transition ease-in-out py-6 px-4 md:px-12 flex justify-between items-center w-full absolute`}
-      >
-        {userAgent.includes("Mobile") ? (
-          <MobileNavbar />
-        ) : (
-          <DesktopNavbar
-            user={user}
-            menu={menu}
-            logoutHandler={logoutHandler}
-            isLoggedIn={isLoggedIn}
-            dropdownItem={dropdownItem}
-            cards={cards}
-            toggleDrawer={toggleDrawer}
-            isOpen={isOpen}
-            link={link}
-            pathName={pathName}
-            toggleSubmenu={toggleSubmenu}
-            showSubmenu={showSubmenu}
+    <header
+      className={`fixed w-full top-0 left-0 z-50 transition-all duration-500 ease-in-out ${
+        isScrolled ? "bg-white shadow-lg py-2" : "bg-transparent py-4"
+      }`}
+    >
+      <div className="container mx-auto px-4 flex justify-between items-center transition-all duration-500 ease-in-out">
+        {/* Logo or Brand */}
+        <div
+          className={`text-xl font-bold transform transition-transform duration-500 ${
+            isScrolled ? "scale-90" : "scale-100"
+          }`}
+        >
+          Logo
+        </div>
+
+        {/* Search Box */}
+        <div
+          className={`transition-all duration-500 ease-in-out transform ${
+            isScrolled ? "opacity-0 scale-75" : "opacity-100 scale-100"
+          }`}
+        >
+          <input
+            type="text"
+            className="border border-gray-300 rounded-md py-1 px-2 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all duration-300 ease-in-out"
+            placeholder="Search..."
           />
-        )}
+        </div>
+
+        {/* Menu */}
+        <nav className="flex items-center space-x-6">
+          <ul className="flex space-x-6 text-gray-700">
+            <li>
+              <a
+                href="#home"
+                className="hover:text-blue-500 transition-colors duration-300"
+              >
+                Home
+              </a>
+            </li>
+            <li>
+              <a
+                href="#about"
+                className="hover:text-blue-500 transition-colors duration-300"
+              >
+                About Us
+              </a>
+            </li>
+            <li>
+              <a
+                href="#contact"
+                className="hover:text-blue-500 transition-colors duration-300"
+              >
+                Contact Us
+              </a>
+            </li>
+          </ul>
+        </nav>
       </div>
-    </div>
+    </header>
   );
 }
 export default Navbar;

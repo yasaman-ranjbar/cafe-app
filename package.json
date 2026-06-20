@@ -28,6 +28,7 @@
     "jsonwebtoken": "^9.0.2",
     "mongoose": "^8.4.3",
     "next": "13.5.4",
+    "next-auth": "^4.24.8",
     "npm": "^10.8.1",
     "react": "^18",
     "react-dom": "^18",
