@@ -6,4 +6,6 @@ export type SearchProps = {
     event: React.KeyboardEvent<HTMLInputElement>
   ) => void;
   search: string;
+  clearSearch: () => void;
+  showClearIcon: string
 };

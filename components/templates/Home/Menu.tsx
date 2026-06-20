@@ -26,7 +26,7 @@ function Menu({ menu }: { menu: ProductDetailsProps[] }) {
       </h2> */}
       <div>
         <div className="grid grid-cols-2 gap-12">
-          {menu.map((item) => (
+          {menu?.map((item) => (
             <MenuSection key={item._id} {...item} />
           ))}
         </div>

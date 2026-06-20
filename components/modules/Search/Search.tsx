@@ -1,54 +1,52 @@
 import SearchIcon from "@mui/icons-material/Search";
 import { SearchProps } from "./search.type";
-import { FormControl, Input, InputAdornment, TextField } from "@mui/material";
+import { FormControl, IconButton, Input, InputAdornment, OutlinedInput, TextField } from "@mui/material";
+import CloseIcon from "@mui/icons-material/Close";
+import { useState } from "react";
 
 const Search = ({
   searchHandler,
   searchHandlerWithEnter,
   search,
+  clearSearch,
+  showClearIcon,
 }: SearchProps) => {
   return (
-    <div className="md:flex gap-2 items-center relative border-b border-white hidden ">
-      {/* <input
+    <FormControl className="flex-1">
+      <TextField
         value={search}
-        onChange={(event) => setSearch(event.target.value)}
-        onKeyDown={searchHandlerWithEnter}
-        type="text"
-        className=" outline-none bg-transparent  h-10 text-yellow"
-        placeholder="Search..."
-      /> */}
-      {/* <TextField
-        placeholder="Search..."
-        value={search}
-        onKeyDown={searchHandlerWithEnter}
-        onChange={(event) => setSearch(event.target.value)}
-        id="outlined-basic"
-        label="Outlined"
+        sx={{
+          "& .MuiOutlinedInput-root": {
+            "& fieldset": {
+              borderColor: "white",
+              color: "#fff",
+            },
+          },
+          "& .MuiInputBase-root": {
+            color: "#fff",
+          },
+        }}
+        size="small"
         variant="outlined"
-        fullWidth
-        startAdornment={
-          <InputAdornment position="start">
-            <AccountCircle />
-          </InputAdornment>
-        }
-      /> */}
-      <FormControl variant="standard">
-        <Input
-          placeholder="Search..."
-          value={search}
-          onKeyDown={searchHandlerWithEnter}
-          onChange={searchHandler}
-          id="search"
-          fullWidth
-          startAdornment={
+        onChange={searchHandler}
+        onKeyDown={searchHandlerWithEnter}
+        InputProps={{
+          startAdornment: (
             <InputAdornment position="start">
-              <SearchIcon />
+              <SearchIcon className="text-white" />
             </InputAdornment>
-          }
-        />
-      </FormControl>
-      {/* <SearchIcon onClick={searchHandler} /> */}
-    </div>
+          ),
+          endAdornment: (
+            <InputAdornment position="end">
+              <CloseIcon
+                onClick={clearSearch}
+                style={{ display: showClearIcon, color: "#fff" }}
+              />
+            </InputAdornment>
+          ),
+        }}
+      />
+    </FormControl>
   );
 };
 
