@@ -1,5 +1,5 @@
 export interface CartProductProps {
-  decreaseProduct: (id: number) => void;
-  increaseProduct: (id: number) => void;
-  removeProduct: (id: number) => void;
+  decreaseProduct: (id: string) => void;
+  increaseProduct: (id: string) => void;
+  removeProduct: (id: string) => void;
 }

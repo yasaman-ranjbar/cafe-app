@@ -1,7 +1,7 @@
 
+import { ProductDetailsProps } from "@/components/modules/MenuSection/MenuSection";
 import ProductDetails from "@/components/templates/Products/ProductDetails";
 import PageLayout from "@/layout/PageLayout";
-import {  ProductDetailsProps } from "@/services/requests/product";
 import Head from "next/head";
 
 interface CommentDataProps {

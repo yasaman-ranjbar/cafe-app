@@ -1,6 +1,5 @@
-import MenuSection from "@/components/modules/MenuSection/MenuSection";
+import MenuSection, { ProductDetailsProps } from "@/components/modules/MenuSection/MenuSection";
 import SectionHeader from "@/components/modules/SectionHeader/SectionHeader";
-import { ProductDetailsProps } from "@/services/requests/product";
 
 function Menu({ menu }: { menu: ProductDetailsProps[] }) {
 

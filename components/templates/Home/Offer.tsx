@@ -1,4 +1,3 @@
-import { newsletter } from "@/services/requests/neewsletter";
 import { useState } from "react";
 import { toast } from "react-toastify";
 
@@ -11,12 +10,6 @@ function Offer() {
 
   const addEmail = async (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
-    if(!email) return toast.error("Email is required");
-    const res = await newsletter({ email });
-    if(res.status === 201) {
-      setEmail("")
-      toast.success(res.data.message);
-    }
   };
 
   return (

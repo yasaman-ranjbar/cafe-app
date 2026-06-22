@@ -2,28 +2,14 @@ import TextField, { Textarea } from "../TextField/TextField";
 import { useForm, Controller } from "react-hook-form";
 import { IContact } from "@/components/modules/Contact/types";
 import { toast } from "react-toastify";
-import { contact } from "@/services/requests/contact";
 import IButton from "../Button/Button";
 
 const ContactForm = () => {
   const { handleSubmit, register, setValue, formState: {errors} } = useForm<IContact>();
 
   const onSubmit = async (data: IContact) => {
-    if (data.name === '' || data.email === "" || data.message === "") {
-      toast.error("Please fill all the fields");
-      return;
-    } else {
-      const res = await contact(data);
-      if (res.status === 201) {
-        toast.success(res.data.message);
-        setValue("name", "");
-        setValue("email", "");
-        setValue("subject", "");
-        setValue("message", "");
-      }
-    }
+
   };
-  console.log("error" , errors)
 
   return (
     <div className="flex-1">

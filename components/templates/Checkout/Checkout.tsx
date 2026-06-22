@@ -1,6 +1,4 @@
-import { getMe } from "@/services/requests/auth";
 import Image from "next/image";
-import { useEffect } from "react";
 import "@fortawesome/fontawesome-svg-core/styles.css";
 import { config } from "@fortawesome/fontawesome-svg-core";
 config.autoAddCss = false;
@@ -11,18 +9,9 @@ import {
   DisclosureButton,
   DisclosurePanel,
 } from "@headlessui/react";
-import clsx from "clsx";
 
 const Checkout = () => {
-  useEffect(() => {
-    const data = async () => {
-      const res = await getMe();
-      console.log("getMe", res);
-    };
-
-    data();
-  }, []);
-
+ 
   return (
     <div className="container py-24">
       <h2 className="text-xl font-semibold mb-[1.5rem]">Shipping Address</h2>

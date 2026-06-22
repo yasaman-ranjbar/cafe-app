@@ -14,8 +14,6 @@ const CartProduct = ({
 }: CartProductProps) => {
   const cart = useCard((state) => state.cards);
 
-  console.log(cart);
-
   return (
     <>
       {cart.map((product) => (

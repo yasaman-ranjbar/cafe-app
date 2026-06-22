@@ -9,13 +9,13 @@ const CartDrawer = () => {
   const increasePro = useCard((state) => state.increaseProduct);
   const decreasePro = useCard((state) => state.decreaseProduct);
 
-  const removeProduct = (id: number) => {
+  const removeProduct = (id: string) => {
     removeCart(id);
   };
-  const increaseProduct = (id: number) => {
+  const increaseProduct = (id: string) => {
     increasePro(id)
   };
-  const decreaseProduct = (id: number) => {
+  const decreaseProduct = (id: string) => {
     decreasePro(id);
   };
 
