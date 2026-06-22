@@ -4,5 +4,5 @@ export type TestimonialProps = {
     productID?: string;
     score?: number;
     img: string;
-    id?: number
+    id?: string
 }
